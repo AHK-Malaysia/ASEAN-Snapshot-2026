@@ -1,669 +1,1509 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASEAN Snapshot 2026 – German Chambers of Commerce</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
-<style>
-:root{--navy:#0a1e3d;--dark-blue:#0d2b5c;--blue:#0077c0;--teal:#00b4a0;--green:#2ecc71;--orange:#f39c12;--gold:#f1c40f;--white:#fff;--light-bg:#e8f4f8;--grey:#94a3b8;--accent:#00d4aa}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Outfit','Segoe UI',sans-serif;background:var(--navy);color:var(--navy)}
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:var(--navy)}
-::-webkit-scrollbar-thumb{background:var(--teal);border-radius:4px}
-h1,h2,h3,.serif{font-family:'DM Serif Display',Georgia,serif}
-a{text-decoration:none}
+<!DOCTYPE html> 
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:999;transition:all .3s;height:64px}
-.nav.scrolled{background:rgba(10,30,61,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-brand{display:flex;align-items:center;gap:12px}
-.nav-brand img{height:36px;border-radius:4px}
-.nav-brand span{color:#fff;font-weight:700;font-size:15px}
-.nav-links{display:flex;gap:4px}
-.nav-links a{color:rgba(255,255,255,.7);font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;transition:all .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--accent);background:rgba(0,212,170,.1)}
-@media(max-width:768px){.nav-links{display:none}}
+<html lang="en"> 
 
-/* SECTIONS */
-.section{padding:80px 0;position:relative;overflow:hidden}
-.section-light{background:var(--light-bg)}
-.section-dark{background:linear-gradient(135deg,var(--navy),var(--dark-blue));color:#fff}
-.container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
-.section-title{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
-.section-title span{border-bottom:4px solid var(--teal);padding-bottom:6px}
-.section-subtitle{font-size:16px;color:var(--grey);max-width:700px;margin-bottom:40px;line-height:1.7}
-.section-dark .section-subtitle{color:rgba(255,255,255,.6)}
+<head> 
 
-/* HERO */
-.hero{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#0f3460 40%,#16537e 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 24px}
-.hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.03) 1px,transparent 0);background-size:40px 40px}
-.hero-orb{position:absolute;border-radius:50%;animation:float 8s ease-in-out infinite}
-.hero-orb-1{top:10%;right:5%;width:300px;height:300px;background:radial-gradient(circle,rgba(0,180,160,.08),transparent 70%)}
-.hero-orb-2{bottom:15%;left:8%;width:200px;height:200px;background:radial-gradient(circle,rgba(0,119,192,.1),transparent 70%);animation-delay:2s;animation-duration:6s}
-.hero-content{max-width:1200px;width:100%;text-align:center;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:16px;margin-bottom:24px;background:rgba(255,255,255,.06);border-radius:50px;padding:8px 28px;border:1px solid rgba(255,255,255,.1);animation:fadeUp .8s ease-out}
-.hero-badge img{height:42px;border-radius:4px}
-.hero-badge span{color:rgba(255,255,255,.8);font-size:14px;font-weight:600}
-.hero h1{font-size:clamp(42px,7vw,80px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s ease-out .2s both}
-.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--teal),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{font-size:clamp(16px,2vw,22px);color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 40px;line-height:1.5;animation:fadeUp .8s ease-out .4s both}
-.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;max-width:800px;margin:0 auto;animation:fadeUp .8s ease-out .6s both}
-.hero-cta{margin-top:48px;animation:fadeUp .8s ease-out .8s both}
-.hero-cta a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;padding:14px 32px;border-radius:50px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s}
-.hero-cta a:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,180,160,.3)}
+<meta charset="UTF-8"> 
 
-/* STAT CARDS */
-.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px 24px;text-align:center;transition:transform .3s,box-shadow .3s}
-.stat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,180,160,.2)}
-.stat-value{font-size:clamp(32px,5vw,48px);font-weight:900;font-family:'DM Serif Display',Georgia,serif}
-.stat-label{font-size:14px;opacity:.8;margin-top:8px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-/* GRID CARDS */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.highlight-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s;border-left:4px solid var(--teal)}
-.highlight-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.08)}
-.highlight-card .icon{font-size:36px;margin-bottom:12px}
-.highlight-card h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
-.highlight-card p{font-size:14px;color:var(--grey);line-height:1.6}
+<title>ASEAN Snapshot 2026 – German Chambers of Commerce</title> 
 
-/* TABS */
-.tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
-.tab-btn{padding:10px 20px;border-radius:50px;border:none;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-weight:700;font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit;text-transform:capitalize}
-.tab-btn.active{background:var(--teal);color:var(--navy)}
-.tab-content{display:none}
-.tab-content.active{display:block}
-.chart-box{background:rgba(255,255,255,.04);border-radius:16px;padding:24px}
-.chart-box h3{color:#fff;font-size:18px;margin-bottom:20px}
+<link rel="icon" type="image/png" href="data:image/png;base64,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"> 
 
-/* COUNTRY CARDS */
-.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
-.country-card{background:#fff;border-radius:16px;padding:24px 20px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);border:2px solid transparent;box-shadow:0 2px 12px rgba(0,0,0,.06);position:relative;overflow:hidden}
-.country-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,119,192,.15);border-color:var(--teal)}
-.country-card .flag{font-size:40px;margin-bottom:12px}
-.country-card h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px}
-.country-card .stat-row{display:flex;justify-content:space-between;margin-bottom:6px}
-.country-card .stat-row .lbl{font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase}
-.country-card .stat-row .val{font-size:14px;font-weight:700}
-.country-card .cta{margin-top:16px;padding:6px 12px;background:var(--light-bg);border-radius:8px;font-size:12px;color:var(--blue);font-weight:600;text-align:center}
+<meta property="og:title" content="ASEAN Snapshot 2026"> 
 
-/* MODAL */
-.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,30,61,.85);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.open{display:flex}
-.modal{background:#fff;border-radius:24px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.modal-header{background:linear-gradient(135deg,var(--navy),var(--dark-blue));padding:36px 32px 24px;border-radius:24px 24px 0 0;color:#fff}
-.modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.modal-body{padding:24px 32px}
+<meta property="og:description" content="Focus on German-ASEAN Business Relations – AHK Network"> 
 
-/* TIMELINE CARDS */
-.timeline-legend{display:flex;gap:16px;margin-bottom:32px;flex-wrap:wrap}
-.timeline-legend .item{display:flex;align-items:center;gap:6px}
-.timeline-legend .dot{width:12px;height:12px;border-radius:50%}
-.timeline-legend span{font-size:13px;color:var(--grey);font-weight:600}
-.timeline-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-.timeline-card{background:#fff;border-radius:16px;padding:24px 20px;position:relative;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;border-top:4px solid var(--teal)}
-.timeline-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,.12)}
-.timeline-card .bg-icon{position:absolute;top:-20px;right:-10px;font-size:72px;opacity:.06}
-.timeline-card .year-badge{display:inline-block;border-radius:8px;padding:4px 12px;margin-bottom:12px}
-.timeline-card .year{font-size:22px;font-weight:900}
-.timeline-card .content{display:flex;align-items:flex-start;gap:10px}
-.timeline-card .content .icon{font-size:24px;flex-shrink:0}
-.timeline-card .content p{font-size:14px;color:var(--navy);line-height:1.5}
+<meta property="og:image" content="data:image/png;base64,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"> 
 
-/* COLLAGE / MEET THE TEAM */
-.collage-section{background:linear-gradient(180deg,var(--light-bg) 0%,#d4edf5 100%);padding:80px 0;position:relative;overflow:hidden}
-.collage-section::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(0,180,160,.06),transparent 70%);pointer-events:none}
-.collage-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;max-width:960px;margin:0 auto}
-.collage-item{text-align:center;position:relative;cursor:default;transition:transform .4s cubic-bezier(.4,0,.2,1)}
-.collage-item:hover{transform:translateY(-8px) scale(1.04)}
-.collage-hex{width:140px;height:140px;position:relative;margin:0 auto 16px;border-radius:50%;overflow:hidden;box-shadow:0 8px 32px rgba(0,119,192,.15);border:4px solid #fff;transition:all .4s}
-.collage-item:hover .collage-hex{border-color:var(--teal);box-shadow:0 12px 48px rgba(0,180,160,.25)}
-.collage-hex img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.collage-item:hover .collage-hex img{transform:scale(1.08)}
-.collage-hex::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,180,160,.0),rgba(0,119,192,.1));opacity:0;transition:opacity .3s}
-.collage-item:hover .collage-hex::after{opacity:1}
-.collage-name{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:2px}
-.collage-country{font-size:13px;font-weight:600;color:var(--teal);display:flex;align-items:center;justify-content:center;gap:6px}
-.collage-country .flag{font-size:16px}
-.collage-connector{position:absolute;top:70px;left:100%;width:32px;height:2px;background:linear-gradient(90deg,var(--teal),transparent)}
-@media(max-width:768px){.collage-grid{gap:20px}.collage-hex{width:100px;height:100px}.collage-name{font-size:14px}}
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
 
-/* CONTACTS */
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.contact-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;transition:all .3s;display:flex;gap:16px;align-items:flex-start}
-.contact-card:hover{background:rgba(255,255,255,.1);border-color:var(--teal)}
-.contact-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid rgba(0,212,170,.3);flex-shrink:0}
-.contact-info h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:2px}
-.contact-info .role{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:12px}
-.contact-info .detail{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:5px}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script> 
 
-/* SERVICES */
-.services-grid{margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.service-tag{background:rgba(0,180,160,.08);border:1px solid rgba(0,180,160,.2);border-radius:12px;padding:16px 20px;text-align:center;color:var(--accent);font-size:14px;font-weight:600}
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script> 
 
-/* TRADE */
-.trade-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
-@media(max-width:768px){.trade-grid{grid-template-columns:1fr}}
-.trade-box{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.trade-flow{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.trade-flow span{font-size:32px}
-.trade-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+<style> 
 
-/* FOOTER */
-footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:48px 24px 32px;text-align:center}
-.footer-logos{display:flex;align-items:center;justify-content:center;gap:40px;margin-bottom:32px;flex-wrap:wrap}
-.footer-logos img{height:52px;object-fit:contain}
-.footer-divider{width:1px;height:40px;background:rgba(255,255,255,.15)}
-.hashtag{display:inline-flex;align-items:center;gap:10px;background:rgba(0,180,160,.1);border:1px solid rgba(0,180,160,.25);border-radius:50px;padding:8px 24px;margin-bottom:24px}
-.hashtag span{font-size:16px;font-weight:800;color:var(--accent);letter-spacing:.5px}
-footer .copy{font-size:12px;color:rgba(255,255,255,.35);max-width:600px;margin:0 auto;line-height:1.7}
+:root{--navy:#0a1e3d;--dark-blue:#0d2b5c;--blue:#0077c0;--teal:#00b4a0;--green:#2ecc71;--orange:#f39c12;--gold:#f1c40f;--white:#fff;--light-bg:#e8f4f8;--grey:#94a3b8;--accent:#00d4aa} 
 
-/* ANIMATIONS */
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+*{margin:0;padding:0;box-sizing:border-box} 
 
-/* OVERVIEW GRID */
-.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.chart-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(max-width:768px){.chart-grid-2{grid-template-columns:1fr}}
-.fdi-sectors{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:24px}
-.fdi-sector{background:rgba(255,255,255,.06);border-radius:10px;padding:12px 16px}
-.fdi-sector .lbl{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:4px}
-.fdi-sector .val{font-size:18px;font-weight:800;color:var(--accent)}
-</style>
-</head>
-<body>
+html{scroll-behavior:smooth} 
 
-<!-- NAV -->
-<nav class="nav" id="navbar">
-  <div class="nav-inner">
-    <div class="nav-brand">
-      <img src="data:image/png;base64,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" alt="AHK">
-      <span class="serif">ASEAN Snapshot</span>
-    </div>
-    <div class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#highlights">Highlights</a>
-      <a href="#economic">Economic Data</a>
-      <a href="#trade">Trade</a>
-      <a href="#countries">Countries</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#team">Team</a>
-      <a href="#contacts">Contacts</a>
-    </div>
-  </div>
-</nav>
+body{font-family:'Outfit','Segoe UI',sans-serif;background:var(--navy);color:var(--navy)} 
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <img src="data:image/png;base64,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" alt="AHK">
-      <span>German Chambers of Commerce Abroad</span>
-    </div>
-    <h1 class="serif">ASEAN<br><em>Snapshot 2026</em></h1>
-    <p class="hero-sub">Focus on German–ASEAN Business Relations</p>
-    <div class="hero-stats">
-      <div class="stat-card"><div class="stat-value" style="color:var(--accent)">$4.0T</div><div class="stat-label">ASEAN GDP 2025</div></div>
-      <div class="stat-card"><div class="stat-value" style="color:var(--gold)">692M</div><div class="stat-label">Population</div></div>
-      <div class="stat-card"><div class="stat-value" style="color:var(--blue)">€79.7B</div><div class="stat-label">DE-ASEAN Trade</div></div>
-      <div class="stat-card"><div class="stat-value" style="color:var(--teal)">4.5%</div><div class="stat-label">GDP Growth 2025F</div></div>
-    </div>
-    <div class="hero-cta"><a href="#highlights">Explore the Data ↓</a></div>
-  </div>
-</section>
+::-webkit-scrollbar{width:8px} 
 
-<!-- HIGHLIGHTS -->
-<section class="section section-light" id="highlights">
-  <div class="container">
-    <h2 class="section-title serif"><span>ASEAN Highlights 2026</span></h2>
-    <p class="section-subtitle">Southeast Asia continues to demonstrate resilience, with GDP growth forecasts revised upward for 2025 and 2026. ASEAN remains the 5th largest economy globally.</p>
-    <div class="card-grid" id="highlightCards"></div>
-  </div>
-</section>
+::-webkit-scrollbar-track{background:var(--navy)} 
 
-<!-- ECONOMIC DATA -->
-<section class="section section-dark" id="economic">
-  <div class="container">
-    <h2 class="section-title serif" style="color:#fff"><span>ASEAN Economic Snapshot</span></h2>
-    <p class="section-subtitle">Updated growth forecasts reflect ASEAN's robust performance. Southeast Asia's GDP growth revised to 4.5% for 2025 and 4.4% for 2026 (ADB Dec 2025).</p>
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="overview">Overview</button>
-      <button class="tab-btn" data-tab="growth">Growth</button>
-      <button class="tab-btn" data-tab="fdi">FDI</button>
-      <button class="tab-btn" data-tab="german-fdi">German FDI</button>
-    </div>
-    <div class="tab-content active" id="tab-overview">
-      <div class="overview-grid">
-        <div class="stat-card"><div class="stat-value" style="color:var(--accent)">$4.0T</div><div class="stat-label">ASEAN GDP 2025</div></div>
-        <div class="stat-card"><div class="stat-value" style="color:var(--gold)">4.5%</div><div class="stat-label">GDP Growth 2025F</div></div>
-        <div class="stat-card"><div class="stat-value" style="color:var(--blue)">$230B</div><div class="stat-label">FDI Inflow 2023</div></div>
-        <div class="stat-card"><div class="stat-value" style="color:var(--teal)">$1.8T</div><div class="stat-label">Exports 2023</div></div>
-        <div class="stat-card"><div class="stat-value" style="color:var(--orange)">$1.7T</div><div class="stat-label">Imports 2023</div></div>
-        <div class="stat-card"><div class="stat-value" style="color:var(--green)">692M</div><div class="stat-label">Population 2025</div></div>
-      </div>
-    </div>
-    <div class="tab-content" id="tab-growth">
-      <div class="chart-box"><h3 class="serif">GDP Growth by Country (2024 vs 2025F)</h3><canvas id="growthChart" height="380"></canvas></div>
-    </div>
-    <div class="tab-content" id="tab-fdi">
-      <div class="chart-grid-2">
-        <div class="chart-box"><h3 class="serif">FDI Inflow by Sector (2023)</h3><canvas id="fdiPieChart" height="280"></canvas></div>
-        <div class="chart-box"><h3 class="serif">ASEAN's Top Trading Partners (2023, $B)</h3><canvas id="tradingPartnersChart" height="280"></canvas></div>
-      </div>
-    </div>
-    <div class="tab-content" id="tab-german-fdi">
-      <div class="chart-box">
-        <h3 class="serif">German FDI Flow to ASEAN (Billion US$)</h3>
-        <canvas id="germanFdiChart" height="300"></canvas>
-        <div class="fdi-sectors">
-          <div class="fdi-sector"><div class="lbl">Manufacturing</div><div class="val">$2,519M</div></div>
-          <div class="fdi-sector"><div class="lbl">Financial & Insurance</div><div class="val">$422M</div></div>
-          <div class="fdi-sector"><div class="lbl">Professional/Scientific</div><div class="val">$170M</div></div>
-          <div class="fdi-sector"><div class="lbl">Real Estate</div><div class="val">$155M</div></div>
-          <div class="fdi-sector"><div class="lbl">Transport & Storage</div><div class="val">$64M</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:4px} 
 
-<!-- TRADE -->
-<section class="section section-light" id="trade">
-  <div class="container">
-    <h2 class="section-title serif"><span>German–ASEAN Trade 2026</span></h2>
-    <p class="section-subtitle">Total bilateral trade reached €79.7 billion. Germany exported €27.5B and imported €52.2B from ASEAN. Germany's total 2025 trade was €2.93T with exports up 0.9%.</p>
-    <div class="trade-grid">
-      <div class="trade-box"><h3 class="serif" style="font-size:16px;margin-bottom:20px">Trade Turnover by Country (€ Billion)</h3><canvas id="tradeByCountryChart" height="340"></canvas></div>
-      <div>
-        <div class="trade-box" style="margin-bottom:16px">
-          <div class="trade-flow"><span>🇩🇪</span><span style="font-size:24px">⇄</span><span>🌏</span></div>
-          <div class="trade-cols">
-            <div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">German Exports</div><div class="serif" style="font-size:32px;font-weight:900;color:var(--blue)">€27.5B</div><div style="font-size:13px;color:#e74c3c;font-weight:600">-2.4% YoY</div></div>
-            <div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">German Imports</div><div class="serif" style="font-size:32px;font-weight:900;color:var(--teal)">€52.2B</div><div style="font-size:13px;color:#e74c3c;font-weight:600">-0.6% YoY</div></div>
-          </div>
-        </div>
-        <div class="trade-box">
-          <h4 style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px">Key Trade Products</h4>
-          <div style="margin-bottom:12px"><div style="font-size:12px;color:var(--grey);font-weight:600;margin-bottom:4px">German Exports to ASEAN</div><div style="font-size:13px">Machinery, Electrical Equipment, Vehicles, Optical & Medical Instruments, Pharmaceuticals</div></div>
-          <div><div style="font-size:12px;color:var(--grey);font-weight:600;margin-bottom:4px">German Imports from ASEAN</div><div style="font-size:13px">Electrical Machinery, Footwear, Apparel, Optical Instruments, Electronics</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+h1,h2,h3,.serif{font-family:'DM Serif Display',Georgia,serif} 
 
-<!-- COUNTRIES -->
-<section class="section section-dark" id="countries">
-  <div class="container">
-    <h2 class="section-title serif" style="color:#fff"><span>ASEAN Countries</span></h2>
-    <p class="section-subtitle">Click any country card for detailed economic profiles, trade data with Germany, FDI information, and growth forecasts.</p>
-    <div class="country-grid" id="countryGrid"></div>
-  </div>
-</section>
+a{text-decoration:none} 
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modalContent"></div>
-</div>
+ 
 
-<!-- TIMELINE -->
-<section class="section section-light" id="timeline">
-  <div class="container">
-    <h2 class="section-title serif"><span>ASEAN History & Milestones</span></h2>
-    <div class="timeline-legend">
-      <div class="item"><div class="dot" style="background:#f39c12"></div><span>Foundation</span></div>
-      <div class="item"><div class="dot" style="background:#00b4a0"></div><span>Expansion</span></div>
-      <div class="item"><div class="dot" style="background:#0077c0"></div><span>Integration</span></div>
-      <div class="item"><div class="dot" style="background:#00d4aa"></div><span>Modern Era</span></div>
-    </div>
-    <div class="timeline-grid" id="timelineGrid"></div>
-  </div>
-</section>
+/* NAV */ 
 
-<!-- PHOTO COLLAGE -->
-<section class="collage-section" id="team">
-  <div class="container" style="text-align:center">
-    <h2 class="section-title serif" style="margin-bottom:6px"><span>Meet the AHK Leaders</span></h2>
-    <p class="section-subtitle" style="margin:0 auto 48px;text-align:center">The German Chambers of Commerce network across ASEAN — your first point of contact for doing business in the region.</p>
-    <div class="collage-grid" id="collageGrid"></div>
-  </div>
-</section>
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;transition:all .3s;height:64px} 
 
-<!-- CONTACTS -->
-<section class="section section-dark" id="contacts">
-  <div class="container">
-    <h2 class="section-title serif" style="color:#fff"><span>AHK Network in ASEAN</span></h2>
-    <p class="section-subtitle">The German Chambers of Commerce across ASEAN provide market insights, business setup support, trade fair access, and strategic partner matching.</p>
-    <div class="contact-grid" id="contactGrid"></div>
-    <div class="services-grid">
-      <div class="service-tag">Market Insights & Business Opportunities</div>
-      <div class="service-tag">Talent & HR Solutions</div>
-      <div class="service-tag">Trade Fair & Networking Access</div>
-      <div class="service-tag">Business Setup & Expansion</div>
-      <div class="service-tag">Strategic Partner Matching</div>
-      <div class="service-tag">Executive Training & Workforce Development</div>
-    </div>
-  </div>
-</section>
+.nav.scrolled{background:rgba(10,30,61,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)} 
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logos">
-    <img src="data:image/png;base64,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" alt="AHK">
-    <div class="footer-divider"></div>
-    <img src="data:image/png;base64,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REBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH//Z" alt="BMWE" style="height:64px;background:#fff;padding:6px 12px;border-radius:6px">
-  </div>
-  <div class="hashtag"><span>#PartnerInASEAN</span></div>
-  <p class="copy">© AHK Network ASEAN, 2026. Supported by the Federal Ministry for Economic Affairs and Energy (BMWE). Data: ASEAN Statistics, Destatis, IMF, World Bank, ADB.</p>
-</footer>
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px} 
 
-<script>
-// Register datalabels plugin globally
-Chart.register(ChartDataLabels);
-Chart.defaults.font.family = "'Outfit',sans-serif";
+.nav-brand{display:flex;align-items:center;gap:12px} 
 
-// ===== COUNTER ANIMATION =====
-function animateCounter(el) {
-  const text = el.textContent.trim();
-  // Parse prefix ($, €, etc), number, and suffix (T, B, M, %, etc)
-  const match = text.match(/^([^\d]*?)([\d,.]+)(.*)$/);
-  if (!match) return;
-  const prefix = match[1], targetStr = match[2], suffix = match[3];
-  const target = parseFloat(targetStr.replace(/,/g, ''));
-  if (isNaN(target)) return;
-  const decimals = targetStr.includes('.') ? targetStr.split('.')[1].length : 0;
-  const duration = 1600;
-  const start = performance.now();
-  function step(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-    const current = target * eased;
-    el.textContent = prefix + current.toFixed(decimals) + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = text; // restore exact original
-  }
-  requestAnimationFrame(step);
-}
+.nav-brand img{height:36px;border-radius:4px} 
 
-// Observer for stat values
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !entry.target.dataset.animated) {
-      entry.target.dataset.animated = 'true';
-      animateCounter(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
+.nav-brand span{color:#fff;font-weight:700;font-size:15px} 
 
-// Observe all stat-value elements after DOM is ready
-document.querySelectorAll('.stat-value').forEach(el => counterObserver.observe(el));
+.nav-links{display:flex;gap:4px} 
 
-// Observer for fade-up animations on sections
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
+.nav-links a{color:rgba(255,255,255,.7);font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;transition:all .2s} 
 
-document.querySelectorAll('.highlight-card, .country-card, .timeline-card, .contact-card, .collage-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-  fadeObserver.observe(el);
-});
+.nav-links a:hover,.nav-links a.active{color:var(--accent);background:rgba(0,212,170,.1)} 
 
-// ===== DATA =====
-const countries = [
-  {name:"Vietnam",flag:"🇻🇳",color:"#e74c3c",summary:"ASEAN's fastest-growing economy and a key manufacturing hub with projected GDP growth of ~7% in 2025. The EU-Vietnam FTA (EVFTA) continues driving deeper economic integration.",population:101.6,surface:"331,210",gdpNominal2025:506.4,gdpGrowth:[{y:"2023",v:5.0},{y:"2024",v:7.1},{y:"2025F",v:7.0},{y:"2026F",v:6.5}],tradeWithGermany:{exports:15.1,imports:3.7,total:18.8,yoy:"+9.4%"},germanFDI:"+118.5M EUR (2024)",topExports:"Electrical Equipment, Footwear, Machinery, Apparel",topImports:"Aircraft & Spacecraft, Machinery, Optical Products, Pharma",fdiVolume:"322.5B US$",keyFDISectors:"Manufacturing & Processing, Real Estate, Energy, ICT"},
-  {name:"Malaysia",flag:"🇲🇾",color:"#3498db",summary:"2025 ASEAN Chair with optimistic outlook. GDP grew 5.2% in Q3 2025. Focus on digitalization, green tech, and special economic zones aligns with Germany's strengths.",population:33.9,surface:"329,847",gdpNominal2025:488.3,gdpGrowth:[{y:"2023",v:3.6},{y:"2024",v:4.8},{y:"2025F",v:5.0},{y:"2026F",v:4.5}],tradeWithGermany:{exports:10.8,imports:6.6,total:17.4,yoy:"+3.2%"},germanFDI:"+6.9B EUR (2024)",topExports:"Electrical Equipment, Machinery, Optical Products, Rubber",topImports:"Electrical Equipment, Machinery, Motor Vehicles, Optical Products",fdiVolume:"283.2B US$",keyFDISectors:"Services, Manufacturing, Primary Industry"},
-  {name:"Indonesia",flag:"🇮🇩",color:"#e74c3c",summary:"World's third-largest democracy and only ASEAN G20 member. GDP growth projected at 5.0% in 2025. The Indonesia-EU CEPA expected to expand trade further.",population:284.4,surface:"1,904,569",gdpNominal2025:1490,gdpGrowth:[{y:"2023",v:5.0},{y:"2024",v:5.0},{y:"2025F",v:5.0},{y:"2026F",v:5.1}],tradeWithGermany:{exports:4.4,imports:2.9,total:13.8,yoy:"-1.2%"},germanFDI:"+326.7M EUR (2024)",topExports:"Electronic Devices, Textiles, Vehicles, Chemicals",topImports:"Machinery, Steel, Vehicles, Chemicals",fdiVolume:"105.1B US$",keyFDISectors:"Base Metals, Transportation, Mining, Housing"},
-  {name:"Thailand",flag:"🇹🇭",color:"#2ecc71",summary:"Growth projected at 2.0% in 2025, driven by tourism boom and electronics exports. Germany remains Thailand's largest EU trading partner.",population:70.3,surface:"513,120",gdpNominal2025:545.3,gdpGrowth:[{y:"2023",v:1.9},{y:"2024",v:2.6},{y:"2025F",v:2.0},{y:"2026F",v:1.6}],tradeWithGermany:{exports:8.6,imports:5.1,total:13.7,yoy:"-0.8%"},germanFDI:"+29.9M EUR (2024)",topExports:"Electrical Equipment, Machinery, Pearls, Optical Products",topImports:"Machinery, Electrical Equipment, Motor Vehicles, Optical Products",fdiVolume:"314.4B US$",keyFDISectors:"E&E Industry, Digital Industry, Machinery & Vehicles"},
-  {name:"Singapore",flag:"🇸🇬",color:"#e74c3c",summary:"GDP grew 4.4% in 2024. 2025 growth forecast 1-3%. Leading financial hub and gateway to ASEAN. Total FDI stock of $2.6 trillion.",population:6.0,surface:"719",gdpNominal2025:561.7,gdpGrowth:[{y:"2023",v:1.1},{y:"2024",v:4.4},{y:"2025F",v:2.5},{y:"2026F",v:2.5}],tradeWithGermany:{exports:4.9,imports:7.0,total:11.9,yoy:"+1.5%"},germanFDI:"+989M EUR (2023)",topExports:"Machinery, Electrical Equipment, Optical Products",topImports:"Organic Chemicals, Optical Products, Electrical Equipment, Pharma",fdiVolume:"2,632B US$",keyFDISectors:"Finance & Insurance, Professional Services, Manufacturing"},
-  {name:"Philippines",flag:"🇵🇭",color:"#3498db",summary:"Strong growth with young, English-speaking workforce. GDP projected around 4.4% in 2025. CREATE MORE law drives investment.",population:114.4,surface:"298,170",gdpNominal2025:507.7,gdpGrowth:[{y:"2023",v:5.5},{y:"2024",v:4.8},{y:"2025F",v:4.4},{y:"2026F",v:4.4}],tradeWithGermany:{exports:4.7,imports:2.0,total:6.7,yoy:"-2.1%"},germanFDI:"+4.1M EUR (2024)",topExports:"Electrical Equipment, Machinery, Optical Products, Fats & Oils",topImports:"Electrical Equipment, Machinery, Aircraft, Pharma",fdiVolume:"127.9B US$",keyFDISectors:"Manufacturing, Real Estate, Info & Communications"},
-  {name:"Cambodia",flag:"🇰🇭",color:"#9b59b6",summary:"One of ASEAN's fastest-growing economies with 5.8% GDP growth forecast for 2025. RCEP participation enhances integration.",population:17.4,surface:"181,035",gdpNominal2025:51.2,gdpGrowth:[{y:"2023",v:5.0},{y:"2024",v:5.5},{y:"2025F",v:5.8},{y:"2026F",v:6.2}],tradeWithGermany:{exports:2.2,imports:0.2,total:2.4,yoy:"+5.3%"},germanFDI:"N/A",topExports:"Electronic Devices, Textiles, Vehicles, Agriculture",topImports:"Machinery, Steel, Vehicles, Chemicals",fdiVolume:"42.5B US$",keyFDISectors:"Manufacturing, Agriculture, Tourism, Infrastructure"},
-  {name:"Laos",flag:"🇱🇦",color:"#1abc9c",summary:"Growth projected at 3.5% in 2025, driven by tourism, transport, and energy. Aims to become the 'battery of Southeast Asia'.",population:7.8,surface:"230,800",gdpNominal2025:14.4,gdpGrowth:[{y:"2023",v:3.7},{y:"2024",v:4.1},{y:"2025F",v:3.5},{y:"2026F",v:3.1}],tradeWithGermany:{exports:0.27,imports:0.03,total:0.3,yoy:"+2.1%"},germanFDI:"N/A",topExports:"Apparel, Electrical Products, Footwear",topImports:"Motor Vehicles, Machinery, Electrical Products",fdiVolume:"14.7B US$",keyFDISectors:"Energy, Mining, Agriculture"},
-  {name:"Myanmar",flag:"🇲🇲",color:"#f39c12",summary:"Economy grew 1% in 2024, hindered by political instability. Agriculture and resource extraction show resilience.",population:54.8,surface:"676,578",gdpNominal2025:65.0,gdpGrowth:[{y:"2023",v:2.5},{y:"2024",v:1.0},{y:"2025F",v:1.1},{y:"2026F",v:1.3}],tradeWithGermany:{exports:1.18,imports:0.08,total:1.3,yoy:"-3.5%"},germanFDI:"N/A",topExports:"Apparel, Footwear, Leather Goods",topImports:"Pharmaceutical Products, Fertilizers, Optical Products",fdiVolume:"32.7B US$",keyFDISectors:"Oil & Gas, Manufacturing, Infrastructure"},
-];
+@media(max-width:768px){.nav-links{display:none}} 
 
-const contactsData = [
-  {name:"Dr. Monika Erath",country:"Indonesia",email:"info@ekonid.id",phone:"+62 21 5098 5800",web:"indonesien.ahk.de",photo:"https://gcabc.asia/storage/director_photos/01KG3QS5R4002WSK4ZEXDY1Z73.png",initials:"ME",color:"#e74c3c"},
-  {name:"Hannes Farlock",country:"Malaysia",email:"info@malaysia.ahk.de",phone:"+60 3 9235 1800",web:"malaysia.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-malaysia-farlock.png",initials:"HF",color:"#3498db"},
-  {name:"Peter Kompalla",country:"Vietnam, Myanmar, Cambodia, Laos",email:"kompalla@vietnam.ahk.de",phone:"+84 28 3823 9775",web:"vietnam.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-vietnam-kompalla-min.png",initials:"PK",color:"#e74c3c"},
-  {name:"Christopher Zimmer",country:"Philippines",email:"christopher.zimmer@gpcci.org",phone:"+63 2 8519 8110",web:"philippinen.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-philippines-zimmer-min.png",initials:"CZ",color:"#9b59b6"},
-  {name:"Dr. Tim Philippi",country:"Singapore",email:"tim.philippi@sgc.org.sg",phone:"+65 6433 5331",web:"sgc.org.sg",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-singapore-phillipi-min.png",initials:"TP",color:"#00b4a0"},
-  {name:"Dr. Roland Wein",country:"Thailand",email:"wein@gtcc.org",phone:"+66 2 055 0611",web:"thailand.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-thailand-wein-min.png",initials:"RW",color:"#f39c12"},
-];
+ 
 
-const highlights = [
-  {icon:"🏦",title:"5th Largest GDP",desc:"ASEAN's collective GDP reached ~$4T in 2025, ranking 5th globally behind the US, China, EU, and Japan."},
-  {icon:"👥",title:"3rd Largest Population",desc:"With ~692M inhabitants, ASEAN is the world's 3rd most populous region. Nearly half are under 30."},
-  {icon:"💰",title:"Record FDI of $230B",desc:"Foreign direct investment reached $230B in 2023. Finance, manufacturing, and real estate led sectors."},
-  {icon:"🌐",title:"$2T Digital Economy by 2030",desc:"The ASEAN Digital Economy Framework Agreement (DEFA) will enhance cross-border digital trade."},
-  {icon:"🇪🇺",title:"EU-ASEAN FTA Progress",desc:"FTA negotiations resumed with several ASEAN members. The 31st ASEAN-EU JCC committed to enhanced trade."},
-  {icon:"🇩🇪",title:"Strong German Partnership",desc:"The 8th ASEAN-Germany Development Partnership Meeting reinforced cooperation across multiple sectors."},
-];
+/* SECTIONS */ 
 
-const timelineData = [
-  {year:"1967",text:"ASEAN founded by Indonesia, Malaysia, Philippines, Singapore, and Thailand",icon:"🏛️",era:"founding",color:"#f39c12"},
-  {year:"1984",text:"Brunei joined ASEAN",icon:"🇧🇳",era:"expansion",color:"#00b4a0"},
-  {year:"1995",text:"Vietnam became a member",icon:"🇻🇳",era:"expansion",color:"#00b4a0"},
-  {year:"1997",text:"Laos and Myanmar joined",icon:"🌏",era:"expansion",color:"#00b4a0"},
-  {year:"1999",text:"Cambodia completed the ten-member group",icon:"🇰🇭",era:"expansion",color:"#00b4a0"},
-  {year:"2007",text:"ASEAN Charter signed, establishing legal framework",icon:"📜",era:"integration",color:"#0077c0"},
-  {year:"2015",text:"ASEAN Economic Community (AEC) established",icon:"💼",era:"integration",color:"#0077c0"},
-  {year:"2020",text:"RCEP signed with key regional partners",icon:"🤝",era:"modern",color:"#00d4aa"},
-  {year:"2024",text:"Community Vision 2045 adopted",icon:"🔮",era:"modern",color:"#00d4aa"},
-  {year:"2025",text:"Malaysia chairs ASEAN; DEFA expected",icon:"🇲🇾",era:"modern",color:"#00d4aa"},
-];
+.section{padding:80px 0;position:relative;overflow:hidden} 
 
-// ===== RENDER HIGHLIGHTS =====
-document.getElementById('highlightCards').innerHTML = highlights.map(h=>`
-  <div class="highlight-card"><div class="icon">${h.icon}</div><h3 class="serif">${h.title}</h3><p>${h.desc}</p></div>
-`).join('');
+.section-light{background:var(--light-bg)} 
 
-// ===== RENDER COUNTRIES =====
-document.getElementById('countryGrid').innerHTML = countries.map((c,i)=>`
-  <div class="country-card" onclick="openModal(${i})">
-    <div class="flag">${c.flag}</div>
-    <h3 class="serif">${c.name}</h3>
-    <div class="stat-row"><span class="lbl">GDP 2025F</span><span class="val" style="color:var(--blue)">$${c.gdpNominal2025}B</span></div>
-    <div class="stat-row"><span class="lbl">Growth</span><span class="val" style="color:var(--teal)">${c.gdpGrowth[2].v}%</span></div>
-    <div class="stat-row"><span class="lbl">Trade w/ DE</span><span class="val" style="color:var(--orange)">€${c.tradeWithGermany.total}B</span></div>
-    <div class="cta">Click for details →</div>
-  </div>
-`).join('');
+.section-dark{background:linear-gradient(135deg,var(--navy),var(--dark-blue));color:#fff} 
 
-// ===== RENDER TIMELINE =====
-document.getElementById('timelineGrid').innerHTML = timelineData.map((t,i)=>`
-  <div class="timeline-card" style="border-top-color:${t.color}">
-    <div class="bg-icon">${t.icon}</div>
-    <div class="year-badge" style="background:${t.color}18;border:1px solid ${t.color}33">
-      <span class="year serif" style="color:${t.color}">${t.year}</span>
-    </div>
-    <div class="content"><span class="icon">${t.icon}</span><p>${t.text}</p></div>
-  </div>
-`).join('');
+.container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1} 
 
-// ===== RENDER COLLAGE (with initials fallback) =====
-const collageFlags = {Indonesia:'🇮🇩',Malaysia:'🇲🇾','Vietnam, Myanmar, Cambodia, Laos':'🇻🇳',Philippines:'🇵🇭',Singapore:'🇸🇬',Thailand:'🇹🇭'};
-document.getElementById('collageGrid').innerHTML = contactsData.map((c,i)=>`
-  <div class="collage-item">
-    <div class="collage-hex">
-      <img src="${c.photo}" alt="${c.name}"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="collage-fallback" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,${c.color},${c.color}99);align-items:center;justify-content:center;font-size:36px;font-weight:800;color:#fff;font-family:'Outfit',sans-serif">${c.initials}</div>
-    </div>
-    <div class="collage-name serif">${c.name}</div>
-    <div class="collage-country"><span class="flag">${collageFlags[c.country]||'🌏'}</span>${c.country.split(',')[0]}</div>
-  </div>
-`).join('');
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:12px;letter-spacing:-.5px} 
 
-// ===== RENDER CONTACTS (with initials fallback) =====
-document.getElementById('contactGrid').innerHTML = contactsData.map(c=>`
-  <div class="contact-card">
-    <div style="position:relative;width:72px;height:72px;flex-shrink:0">
-      <img class="contact-photo" src="${c.photo}" alt="${c.name}"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div style="display:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,${c.color},${c.color}99);align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;font-family:'Outfit',sans-serif;border:3px solid rgba(0,212,170,.3)">${c.initials}</div>
-    </div>
-    <div class="contact-info">
-      <h3 class="serif">${c.name}</h3>
-      <div class="role">${c.country}</div>
-      <div class="detail">📧 ${c.email}</div>
-      <div class="detail">📞 ${c.phone}</div>
-      <div class="detail">🌐 ${c.web}</div>
-    </div>
-  </div>
-`).join('');
+.section-title span{border-bottom:4px solid var(--teal);padding-bottom:6px} 
 
-// ===== MODAL =====
-function openModal(i) {
-  const c = countries[i];
-  const yoyColor = c.tradeWithGermany.yoy.startsWith('+') ? 'var(--green)' : 'var(--orange)';
-  document.getElementById('modalContent').innerHTML = `
-    <div class="modal-header">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
-        <span style="font-size:56px">${c.flag}</span>
-        <div><h2 class="serif" style="font-size:36px;margin:0">${c.name}</h2><div style="opacity:.8;font-size:14px">Pop: ${c.population}M · Area: ${c.surface} km²</div></div>
-      </div>
-      <p style="font-size:15px;line-height:1.6;opacity:.9">${c.summary}</p>
-    </div>
-    <div class="modal-body">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px">
-        <div style="background:var(--light-bg);border-radius:12px;padding:16px;text-align:center"><div class="serif stat-value" style="font-size:28px;font-weight:900;color:var(--blue)">$${c.gdpNominal2025}B</div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">GDP 2025F</div></div>
-        <div style="background:var(--light-bg);border-radius:12px;padding:16px;text-align:center"><div class="serif stat-value" style="font-size:28px;font-weight:900;color:var(--teal)">${c.gdpGrowth[2].v}%</div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">Growth 2025F</div></div>
-        <div style="background:var(--light-bg);border-radius:12px;padding:16px;text-align:center"><div class="serif stat-value" style="font-size:28px;font-weight:900;color:var(--orange)">€${c.tradeWithGermany.total}B</div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">Trade with 🇩🇪</div></div>
-      </div>
-      <h3 class="serif" style="font-size:18px;margin-bottom:16px">GDP Growth Trajectory</h3>
-      <canvas id="modalChart" height="200"></canvas>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px">
-        <div><h4 style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:12px">🇩🇪 Germany Trade Relations</h4>
-          <div style="background:var(--light-bg);border-radius:12px;padding:16px">
-            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--grey)">German Exports</span><span style="font-weight:700;color:var(--blue)">€${c.tradeWithGermany.imports}B</span></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--grey)">German Imports</span><span style="font-weight:700;color:var(--teal)">€${c.tradeWithGermany.exports}B</span></div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--grey)">YoY Change</span><span style="font-weight:700;color:${yoyColor}">${c.tradeWithGermany.yoy}</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:13px;color:var(--grey)">German FDI</span><span style="font-weight:700;font-size:12px">${c.germanFDI}</span></div>
-          </div>
-        </div>
-        <div><h4 style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:12px">Investment Profile</h4>
-          <div style="background:var(--light-bg);border-radius:12px;padding:16px">
-            <div style="margin-bottom:8px"><div style="font-size:12px;color:var(--grey);font-weight:600">Total FDI Stock</div><div style="font-weight:700">${c.fdiVolume}</div></div>
-            <div><div style="font-size:12px;color:var(--grey);font-weight:600">Key FDI Sectors</div><div style="font-weight:600;color:var(--blue);font-size:13px">${c.keyFDISectors}</div></div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
-        <div><h4 style="font-size:13px;font-weight:700;color:var(--grey);text-transform:uppercase;margin-bottom:8px">Top German Export Products</h4><p style="font-size:14px;line-height:1.5">${c.topImports}</p></div>
-        <div><h4 style="font-size:13px;font-weight:700;color:var(--grey);text-transform:uppercase;margin-bottom:8px">Top German Import Products</h4><p style="font-size:14px;line-height:1.5">${c.topExports}</p></div>
-      </div>
-    </div>`;
-  document.getElementById('modalOverlay').classList.add('open');
-  // Animate modal stat values
-  setTimeout(()=>{
-    document.querySelectorAll('#modalContent .stat-value').forEach(el => animateCounter(el));
-  },200);
-  setTimeout(()=>{
-    const ctx = document.getElementById('modalChart');
-    if(ctx) new Chart(ctx,{type:'bar',data:{labels:c.gdpGrowth.map(g=>g.y),datasets:[{label:'GDP Growth %',data:c.gdpGrowth.map(g=>g.v),backgroundColor:c.gdpGrowth.map((_,j)=>j===c.gdpGrowth.length-1?'#f39c12':j===c.gdpGrowth.length-2?'#00b4a0':'#0077c0'),borderRadius:8}]},options:{responsive:true,plugins:{legend:{display:false},datalabels:{anchor:'end',align:'top',color:'#333',font:{weight:'bold',size:13},formatter:v=>v+'%'}},scales:{y:{beginAtZero:true,ticks:{callback:v=>v+'%'}}}}});
-  },100);
-}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open')}
-document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+.section-subtitle{font-size:16px;color:var(--grey);max-width:700px;margin-bottom:40px;line-height:1.7} 
 
-// ===== TABS =====
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
-    initCharts();
-  });
-});
+.section-dark .section-subtitle{color:rgba(255,255,255,.6)} 
 
-// ===== NAV SCROLL =====
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
-});
+ 
 
-// ===== CHARTS (with datalabels + legends) =====
-let chartsInit = {};
-const dlWhite = {color:'rgba(255,255,255,.9)',font:{weight:'bold',size:12}};
-const dlDark = {color:'#333',font:{weight:'bold',size:12}};
+/* HERO */ 
 
-function initCharts(){
-  // Growth chart
-  if(!chartsInit.growth && document.getElementById('tab-growth').classList.contains('active')){
-    const gd = [{n:"Vietnam",g24:7.1,g25:7.0},{n:"Cambodia",g24:5.5,g25:5.8},{n:"Indonesia",g24:5.0,g25:5.0},{n:"Malaysia",g24:4.8,g25:5.0},{n:"Philippines",g24:4.8,g25:4.4},{n:"Laos",g24:4.1,g25:3.5},{n:"Thailand",g24:2.6,g25:2.0},{n:"Singapore",g24:4.4,g25:2.5},{n:"Myanmar",g24:1.0,g25:1.1}];
-    new Chart(document.getElementById('growthChart'),{type:'bar',data:{labels:gd.map(d=>d.n),datasets:[
-      {label:'2024',data:gd.map(d=>d.g24),backgroundColor:'#0077c0',borderRadius:6,barPercentage:.4},
-      {label:'2025 Forecast',data:gd.map(d=>d.g25),backgroundColor:'#00b4a0',borderRadius:6,barPercentage:.4}
-    ]},options:{indexAxis:'y',responsive:true,
-      plugins:{
-        legend:{position:'top',labels:{color:'rgba(255,255,255,.85)',font:{size:13,weight:'600'},padding:20,usePointStyle:true,pointStyle:'rectRounded'}},
-        datalabels:{anchor:'end',align:'end',color:'rgba(255,255,255,.85)',font:{weight:'bold',size:11},formatter:v=>v+'%'}
-      },
-      scales:{x:{max:9,ticks:{color:'rgba(255,255,255,.6)',callback:v=>v+'%'},grid:{color:'rgba(255,255,255,.06)'}},y:{ticks:{color:'rgba(255,255,255,.9)',font:{size:13}},grid:{display:false}}}
-    }});
-    chartsInit.growth=true;
-  }
-  // FDI Pie + Trading Partners
-  if(!chartsInit.fdi && document.getElementById('tab-fdi').classList.contains('active')){
-    new Chart(document.getElementById('fdiPieChart'),{type:'doughnut',data:{labels:['Manufacturing','Finance','Wholesale/Retail','Real Estate','Professional Svc.','Other'],datasets:[{data:[32,28,15,12,7,6],backgroundColor:['#0077c0','#00b4a0','#f39c12','#e74c3c','#9b59b6','#3498db'],borderWidth:0}]},options:{responsive:true,
-      plugins:{
-        legend:{position:'bottom',labels:{color:'rgba(255,255,255,.85)',padding:14,font:{size:12},usePointStyle:true,pointStyle:'circle'}},
-        datalabels:{color:'#fff',font:{weight:'bold',size:13},formatter:(v,ctx)=>{const t=ctx.dataset.data.reduce((a,b)=>a+b,0);return Math.round(v/t*100)+'%'}}
-      }
-    }});
-    new Chart(document.getElementById('tradingPartnersChart'),{type:'bar',data:{labels:['🇨🇳 China','🇺🇸 USA','🇪🇺 EU','🇯🇵 Japan','🌏 Intra-ASEAN'],datasets:[{label:'Total Trade ($B)',data:[696.9,395.3,280,239.5,196.9],backgroundColor:['#f39c12','#0077c0','#00b4a0','#f1c40f','#00d4aa'],borderRadius:8}]},options:{responsive:true,
-      plugins:{
-        legend:{display:true,labels:{color:'rgba(255,255,255,.85)',font:{size:12}}},
-        datalabels:{anchor:'end',align:'top',color:'rgba(255,255,255,.85)',font:{weight:'bold',size:12},formatter:v=>'$'+v+'B'}
-      },
-      scales:{y:{ticks:{color:'rgba(255,255,255,.6)',callback:v=>'$'+v+'B'},grid:{color:'rgba(255,255,255,.06)'}},x:{ticks:{color:'rgba(255,255,255,.85)',font:{size:12}},grid:{display:false}}}
-    }});
-    chartsInit.fdi=true;
-  }
-  // German FDI
-  if(!chartsInit.germanFdi && document.getElementById('tab-german-fdi').classList.contains('active')){
-    const fd = [{y:'2019',v:-0.9},{y:'2020',v:-2.9},{y:'2021',v:3.0},{y:'2022',v:2.8},{y:'2023',v:3.3},{y:'2024E',v:3.8}];
-    new Chart(document.getElementById('germanFdiChart'),{type:'bar',data:{labels:fd.map(d=>d.y),datasets:[{label:'German FDI Flow to ASEAN ($B)',data:fd.map(d=>d.v),backgroundColor:fd.map(d=>d.v>=0?'#00b4a0':'#e74c3c'),borderRadius:8}]},options:{responsive:true,
-      plugins:{
-        legend:{display:true,labels:{color:'rgba(255,255,255,.85)',font:{size:12}}},
-        datalabels:{anchor:'end',align:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=0?'top':'bottom'},color:'rgba(255,255,255,.85)',font:{weight:'bold',size:13},formatter:v=>'$'+v.toFixed(1)+'B'}
-      },
-      scales:{y:{ticks:{color:'rgba(255,255,255,.6)',callback:v=>'$'+v+'B'},grid:{color:'rgba(255,255,255,.08)'}},x:{ticks:{color:'rgba(255,255,255,.85)',font:{size:13}},grid:{display:false}}}
-    }});
-    chartsInit.germanFdi=true;
-  }
-}
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#0f3460 40%,#16537e 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 24px} 
 
-// ===== TRADE BY COUNTRY CHART =====
-const tbc = [{n:"Vietnam",v:18.8},{n:"Malaysia",v:17.4},{n:"Indonesia",v:13.8},{n:"Thailand",v:13.7},{n:"Singapore",v:11.9},{n:"Philippines",v:6.7},{n:"Cambodia",v:2.4},{n:"Myanmar",v:1.3},{n:"Laos",v:0.3},{n:"Brunei",v:0.04}];
-const tbcColors = ['#0077c0','#00b4a0','#f39c12','#e74c3c','#9b59b6','#3498db','#0077c0','#00b4a0','#f39c12','#e74c3c'];
-new Chart(document.getElementById('tradeByCountryChart'),{type:'bar',data:{labels:tbc.map(d=>d.n),datasets:[{label:'Trade Turnover (€ Billion)',data:tbc.map(d=>d.v),backgroundColor:tbcColors,borderRadius:8}]},options:{indexAxis:'y',responsive:true,
-  plugins:{
-    legend:{display:true,labels:{font:{size:12},padding:16}},
-    datalabels:{anchor:'end',align:'end',color:'#333',font:{weight:'bold',size:12},formatter:v=>v<1?'€'+v+'B':'€'+v+'B'}
-  },
-  scales:{x:{ticks:{font:{size:12},callback:v=>'€'+v+'B'},grid:{color:'rgba(0,0,0,.06)'}},y:{ticks:{font:{size:13,weight:'600'}},grid:{display:false}}}
-}});
-</script>
-</body>
-</html>
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.03) 1px,transparent 0);background-size:40px 40px} 
 
+.hero-orb{position:absolute;border-radius:50%;animation:float 8s ease-in-out infinite} 
+
+.hero-orb-1{top:10%;right:5%;width:300px;height:300px;background:radial-gradient(circle,rgba(0,180,160,.08),transparent 70%)} 
+
+.hero-orb-2{bottom:15%;left:8%;width:200px;height:200px;background:radial-gradient(circle,rgba(0,119,192,.1),transparent 70%);animation-delay:2s;animation-duration:6s} 
+
+.hero-content{max-width:1200px;width:100%;text-align:center;position:relative;z-index:1} 
+
+.hero-badge{display:inline-flex;align-items:center;gap:16px;margin-bottom:24px;background:rgba(255,255,255,.06);border-radius:50px;padding:8px 28px;border:1px solid rgba(255,255,255,.1);animation:fadeUp .8s ease-out} 
+
+.hero-badge img{height:42px;border-radius:4px} 
+
+.hero-badge span{color:rgba(255,255,255,.8);font-size:14px;font-weight:600} 
+
+.hero h1{font-size:clamp(42px,7vw,80px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s ease-out .2s both} 
+
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--teal),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent} 
+
+.hero-sub{font-size:clamp(16px,2vw,22px);color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 40px;line-height:1.5;animation:fadeUp .8s ease-out .4s both} 
+
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;max-width:800px;margin:0 auto;animation:fadeUp .8s ease-out .6s both} 
+
+.hero-cta{margin-top:48px;animation:fadeUp .8s ease-out .8s both} 
+
+.hero-cta a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff;padding:14px 32px;border-radius:50px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s} 
+
+.hero-cta a:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,180,160,.3)} 
+
+ 
+
+/* STAT CARDS */ 
+
+.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px 24px;text-align:center;transition:transform .3s,box-shadow .3s} 
+
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,180,160,.2)} 
+
+.stat-value{font-size:clamp(32px,5vw,48px);font-weight:900;font-family:'DM Serif Display',Georgia,serif} 
+
+.stat-label{font-size:14px;opacity:.8;margin-top:8px;font-weight:500;letter-spacing:.5px;text-transform:uppercase} 
+
+ 
+
+/* GRID CARDS */ 
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px} 
+
+.highlight-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s;border-left:4px solid var(--teal)} 
+
+.highlight-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.08)} 
+
+.highlight-card .icon{font-size:36px;margin-bottom:12px} 
+
+.highlight-card h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px} 
+
+.highlight-card p{font-size:14px;color:var(--grey);line-height:1.6} 
+
+ 
+
+/* TABS */ 
+
+.tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap} 
+
+.tab-btn{padding:10px 20px;border-radius:50px;border:none;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-weight:700;font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit;text-transform:capitalize} 
+
+.tab-btn.active{background:var(--teal);color:var(--navy)} 
+
+.tab-content{display:none} 
+
+.tab-content.active{display:block} 
+
+.chart-box{background:rgba(255,255,255,.04);border-radius:16px;padding:24px} 
+
+.chart-box h3{color:#fff;font-size:18px;margin-bottom:20px} 
+
+ 
+
+/* COUNTRY CARDS */ 
+
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px} 
+
+.country-card{background:#fff;border-radius:16px;padding:24px 20px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);border:2px solid transparent;box-shadow:0 2px 12px rgba(0,0,0,.06);position:relative;overflow:hidden} 
+
+.country-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,119,192,.15);border-color:var(--teal)} 
+
+.country-card .flag{font-size:40px;margin-bottom:12px} 
+
+.country-card h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px} 
+
+.country-card .stat-row{display:flex;justify-content:space-between;margin-bottom:6px} 
+
+.country-card .stat-row .lbl{font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase} 
+
+.country-card .stat-row .val{font-size:14px;font-weight:700} 
+
+.country-card .cta{margin-top:16px;padding:6px 12px;background:var(--light-bg);border-radius:8px;font-size:12px;color:var(--blue);font-weight:600;text-align:center} 
+
+ 
+
+/* MODAL */ 
+
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,30,61,.85);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px} 
+
+.modal-overlay.open{display:flex} 
+
+.modal{background:#fff;border-radius:24px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative} 
+
+.modal-header{background:linear-gradient(135deg,var(--navy),var(--dark-blue));padding:36px 32px 24px;border-radius:24px 24px 0 0;color:#fff} 
+
+.modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center} 
+
+.modal-body{padding:24px 32px} 
+
+ 
+
+/* TIMELINE CARDS */ 
+
+.timeline-legend{display:flex;gap:16px;margin-bottom:32px;flex-wrap:wrap} 
+
+.timeline-legend .item{display:flex;align-items:center;gap:6px} 
+
+.timeline-legend .dot{width:12px;height:12px;border-radius:50%} 
+
+.timeline-legend span{font-size:13px;color:var(--grey);font-weight:600} 
+
+.timeline-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px} 
+
+.timeline-card{background:#fff;border-radius:16px;padding:24px 20px;position:relative;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;border-top:4px solid var(--teal)} 
+
+.timeline-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,.12)} 
+
+.timeline-card .bg-icon{position:absolute;top:-20px;right:-10px;font-size:72px;opacity:.06} 
+
+.timeline-card .year-badge{display:inline-block;border-radius:8px;padding:4px 12px;margin-bottom:12px} 
+
+.timeline-card .year{font-size:22px;font-weight:900} 
+
+.timeline-card .content{display:flex;align-items:flex-start;gap:10px} 
+
+.timeline-card .content .icon{font-size:24px;flex-shrink:0} 
+
+.timeline-card .content p{font-size:14px;color:var(--navy);line-height:1.5} 
+
+ 
+
+/* COLLAGE / MEET THE TEAM */ 
+
+.collage-section{background:linear-gradient(180deg,var(--light-bg) 0%,#d4edf5 100%);padding:80px 0;position:relative;overflow:hidden} 
+
+.collage-section::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(0,180,160,.06),transparent 70%);pointer-events:none} 
+
+.collage-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;max-width:960px;margin:0 auto} 
+
+.collage-item{text-align:center;position:relative;cursor:default;transition:transform .4s cubic-bezier(.4,0,.2,1)} 
+
+.collage-item:hover{transform:translateY(-8px) scale(1.04)} 
+
+.collage-hex{width:140px;height:140px;position:relative;margin:0 auto 16px;border-radius:50%;overflow:hidden;box-shadow:0 8px 32px rgba(0,119,192,.15);border:4px solid #fff;transition:all .4s} 
+
+.collage-item:hover .collage-hex{border-color:var(--teal);box-shadow:0 12px 48px rgba(0,180,160,.25)} 
+
+.collage-hex img{width:100%;height:100%;object-fit:cover;transition:transform .4s} 
+
+.collage-item:hover .collage-hex img{transform:scale(1.08)} 
+
+.collage-hex::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,180,160,.0),rgba(0,119,192,.1));opacity:0;transition:opacity .3s} 
+
+.collage-item:hover .collage-hex::after{opacity:1} 
+
+.collage-name{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:2px} 
+
+.collage-country{font-size:13px;font-weight:600;color:var(--teal);display:flex;align-items:center;justify-content:center;gap:6px} 
+
+.collage-country .flag{font-size:16px} 
+
+.collage-connector{position:absolute;top:70px;left:100%;width:32px;height:2px;background:linear-gradient(90deg,var(--teal),transparent)} 
+
+@media(max-width:768px){.collage-grid{gap:20px}.collage-hex{width:100px;height:100px}.collage-name{font-size:14px}} 
+
+ 
+
+/* CONTACTS */ 
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px} 
+
+.contact-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;transition:all .3s;display:flex;gap:16px;align-items:flex-start} 
+
+.contact-card:hover{background:rgba(255,255,255,.1);border-color:var(--teal)} 
+
+.contact-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid rgba(0,212,170,.3);flex-shrink:0} 
+
+.contact-info h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:2px} 
+
+.contact-info .role{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:12px} 
+
+.contact-info .detail{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:5px} 
+
+ 
+
+/* SERVICES */ 
+
+.services-grid{margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px} 
+
+.service-tag{background:rgba(0,180,160,.08);border:1px solid rgba(0,180,160,.2);border-radius:12px;padding:16px 20px;text-align:center;color:var(--accent);font-size:14px;font-weight:600} 
+
+ 
+
+/* TRADE */ 
+
+.trade-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px} 
+
+@media(max-width:768px){.trade-grid{grid-template-columns:1fr}} 
+
+.trade-box{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.04)} 
+
+.trade-flow{display:flex;align-items:center;gap:12px;margin-bottom:16px} 
+
+.trade-flow span{font-size:32px} 
+
+.trade-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px} 
+
+ 
+
+/* FOOTER */ 
+
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:48px 24px 32px;text-align:center} 
+
+.footer-logos{display:flex;align-items:center;justify-content:center;gap:40px;margin-bottom:32px;flex-wrap:wrap} 
+
+.footer-logos img{height:52px;object-fit:contain} 
+
+.footer-divider{width:1px;height:40px;background:rgba(255,255,255,.15)} 
+
+.hashtag{display:inline-flex;align-items:center;gap:10px;background:rgba(0,180,160,.1);border:1px solid rgba(0,180,160,.25);border-radius:50px;padding:8px 24px;margin-bottom:24px} 
+
+.hashtag span{font-size:16px;font-weight:800;color:var(--accent);letter-spacing:.5px} 
+
+footer .copy{font-size:12px;color:rgba(255,255,255,.35);max-width:600px;margin:0 auto;line-height:1.7} 
+
+ 
+
+/* ANIMATIONS */ 
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}} 
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}} 
+
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}} 
+
+ 
+
+/* OVERVIEW GRID */ 
+
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px} 
+
+.chart-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px} 
+
+@media(max-width:768px){.chart-grid-2{grid-template-columns:1fr}} 
+
+ 
+
+/* ===== MOBILE RESPONSIVE ===== */ 
+
+@media(max-width:768px){ 
+
+  .section{padding:48px 0} 
+
+  .container{padding:0 16px} 
+
+  .hero{min-height:auto;padding:100px 16px 60px} 
+
+  .hero h1{font-size:36px} 
+
+  .hero-sub{font-size:15px;margin-bottom:24px} 
+
+  .hero-badge{padding:6px 16px;gap:10px} 
+
+  .hero-badge img{height:28px} 
+
+  .hero-badge span{font-size:12px} 
+
+  .hero-stats{grid-template-columns:1fr 1fr;gap:10px} 
+
+  .stat-card{padding:16px 12px} 
+
+  .stat-value{font-size:28px!important} 
+
+  .stat-label{font-size:11px} 
+
+  .hero-cta a{padding:12px 24px;font-size:14px} 
+
+  .section-title{font-size:24px} 
+
+  .section-subtitle{font-size:14px;margin-bottom:24px} 
+
+  .card-grid{grid-template-columns:1fr} 
+
+  .highlight-card{padding:20px} 
+
+  .tabs{gap:6px} 
+
+  .tab-btn{padding:8px 14px;font-size:12px} 
+
+  .chart-box{padding:16px} 
+
+  .chart-box h3{font-size:15px} 
+
+  .overview-grid{grid-template-columns:1fr 1fr} 
+
+  .country-grid{grid-template-columns:1fr} 
+
+  .country-card{padding:20px 16px} 
+
+  .trade-grid{grid-template-columns:1fr} 
+
+  .trade-box{padding:20px} 
+
+  .trade-cols{grid-template-columns:1fr} 
+
+  .trade-flow span{font-size:24px} 
+
+  .timeline-grid{grid-template-columns:1fr} 
+
+  .contact-grid{grid-template-columns:1fr} 
+
+  .contact-card{padding:16px} 
+
+  .contact-photo{width:56px;height:56px} 
+
+  .services-grid{grid-template-columns:1fr 1fr} 
+
+  .service-tag{padding:12px;font-size:12px} 
+
+  .modal{border-radius:16px;margin:8px} 
+
+  .modal-header{padding:24px 20px 16px} 
+
+  .modal-header h2{font-size:24px!important} 
+
+  .modal-header span{font-size:40px!important} 
+
+  .modal-body{padding:16px 20px} 
+
+  .modal-body>div{grid-template-columns:1fr!important} 
+
+  .modal-close{top:12px;right:12px} 
+
+  .footer-logos{gap:20px} 
+
+  .footer-logos img{height:40px} 
+
+  .footer-logos img:last-child{height:48px!important} 
+
+  .footer-divider{height:30px} 
+
+  .hashtag span{font-size:14px} 
+
+  .fdi-sectors{grid-template-columns:1fr 1fr} 
+
+  .fdi-sector{padding:10px 12px} 
+
+  .fdi-sector .val{font-size:15px} 
+
+} 
+
+@media(max-width:480px){ 
+
+  .hero h1{font-size:28px} 
+
+  .hero-stats{grid-template-columns:1fr 1fr} 
+
+  .stat-value{font-size:24px!important} 
+
+  .overview-grid{grid-template-columns:1fr} 
+
+  .services-grid{grid-template-columns:1fr} 
+
+  .collage-grid{gap:16px} 
+
+  .collage-hex{width:80px;height:80px} 
+
+  .collage-name{font-size:13px} 
+
+  .collage-country{font-size:11px} 
+
+  .fdi-sectors{grid-template-columns:1fr} 
+
+} 
+
+/* ===== MOBILE NAV HAMBURGER ===== */ 
+
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px} 
+
+.nav-toggle span{display:block;width:22px;height:2px;background:#fff;margin:5px 0;transition:all .3s;border-radius:2px} 
+
+@media(max-width:768px){ 
+
+  .nav-toggle{display:block} 
+
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,30,61,.97);backdrop-filter:blur(16px);flex-direction:column;padding:16px 24px;gap:4px;border-bottom:1px solid rgba(255,255,255,.08)} 
+
+  .nav-links.open{display:flex} 
+
+  .nav-links a{padding:12px 16px;font-size:15px} 
+
+} 
+
+.fdi-sectors{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:24px} 
+
+.fdi-sector{background:rgba(255,255,255,.06);border-radius:10px;padding:12px 16px} 
+
+.fdi-sector .lbl{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:4px} 
+
+.fdi-sector .val{font-size:18px;font-weight:800;color:var(--accent)} 
+
+</style> 
+
+</head> 
+
+<body> 
+
+ 
+
+<!-- NAV --> 
+
+<nav class="nav" id="navbar"> 
+
+  <div class="nav-inner"> 
+
+    <div class="nav-brand"> 
+
+      <img src="data:image/png;base64,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" alt="AHK"> 
+
+      <span class="serif">ASEAN Snapshot</span> 
+
+    </div> 
+
+    <div class="nav-links" id="navLinks"> 
+
+      <a href="#hero">Home</a> 
+
+      <a href="#highlights">Highlights</a> 
+
+      <a href="#economic">Economic Data</a> 
+
+      <a href="#trade">Trade</a> 
+
+      <a href="#countries">Countries</a> 
+
+      <a href="#timeline">Timeline</a> 
+
+      <a href="#team">Team</a> 
+
+      <a href="#contacts">Contacts</a> 
+
+    </div> 
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button> 
+
+  </div> 
+
+</nav> 
+
+ 
+
+<!-- HERO --> 
+
+<section class="hero" id="hero"> 
+
+  <div class="hero-grid"></div> 
+
+  <div class="hero-orb hero-orb-1"></div> 
+
+  <div class="hero-orb hero-orb-2"></div> 
+
+  <div class="hero-content"> 
+
+    <div class="hero-badge"> 
+
+      <img src="data:image/png;base64,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" alt="AHK"> 
+
+      <span>German Chambers of Commerce Abroad</span> 
+
+    </div> 
+
+    <h1 class="serif">ASEAN<br><em>Snapshot 2026</em></h1> 
+
+    <p class="hero-sub">Focus on German–ASEAN Business Relations</p> 
+
+    <div class="hero-stats"> 
+
+      <div class="stat-card"><div class="stat-value" style="color:var(--accent)">$4.0T</div><div class="stat-label">ASEAN GDP 2025</div></div> 
+
+      <div class="stat-card"><div class="stat-value" style="color:var(--gold)">692M</div><div class="stat-label">Population</div></div> 
+
+      <div class="stat-card"><div class="stat-value" style="color:var(--blue)">€79.7B</div><div class="stat-label">DE-ASEAN Trade</div></div> 
+
+      <div class="stat-card"><div class="stat-value" style="color:var(--teal)">4.5%</div><div class="stat-label">GDP Growth 2025F</div></div> 
+
+    </div> 
+
+    <div class="hero-cta"><a href="#highlights">Explore the Data ↓</a></div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- HIGHLIGHTS --> 
+
+<section class="section section-light" id="highlights"> 
+
+  <div class="container"> 
+
+    <h2 class="section-title serif"><span>ASEAN Highlights 2026</span></h2> 
+
+    <p class="section-subtitle">Southeast Asia continues to demonstrate resilience, with GDP growth forecasts revised upward for 2025 and 2026. ASEAN remains the 5th largest economy globally.</p> 
+
+    <div class="card-grid" id="highlightCards"></div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- ECONOMIC DATA --> 
+
+<section class="section section-dark" id="economic"> 
+
+  <div class="container"> 
+
+    <h2 class="section-title serif" style="color:#fff"><span>ASEAN Economic Snapshot</span></h2> 
+
+    <p class="section-subtitle">Updated growth forecasts reflect ASEAN's robust performance. Southeast Asia's GDP growth revised to 4.5% for 2025 and 4.4% for 2026 (ADB Dec 2025).</p> 
+
+    <div class="tabs"> 
+
+      <button class="tab-btn active" data-tab="overview">Overview</button> 
+
+      <button class="tab-btn" data-tab="growth">Growth</button> 
+
+      <button class="tab-btn" data-tab="fdi">FDI</button> 
+
+      <button class="tab-btn" data-tab="german-fdi">German FDI</button> 
+
+    </div> 
+
+    <div class="tab-content active" id="tab-overview"> 
+
+      <div class="overview-grid"> 
+
+        <div class="stat-card"><div class="stat-value" style="color:var(--accent)">$4.0T</div><div class="stat-label">ASEAN GDP 2025</div></div> 
+
+        <div class="stat-card"><div class="stat-value" style="color:var(--gold)">4.5%</div><div class="stat-label">GDP Growth 2025F</div></div> 
+
+        <div class="stat-card"><div class="stat-value" style="color:var(--blue)">$230B</div><div class="stat-label">FDI Inflow 2023</div></div> 
+
+        <div class="stat-card"><div class="stat-value" style="color:var(--teal)">$1.8T</div><div class="stat-label">Exports 2023</div></div> 
+
+        <div class="stat-card"><div class="stat-value" style="color:var(--orange)">$1.7T</div><div class="stat-label">Imports 2023</div></div> 
+
+        <div class="stat-card"><div class="stat-value" style="color:var(--green)">692M</div><div class="stat-label">Population 2025</div></div> 
+
+      </div> 
+
+    </div> 
+
+    <div class="tab-content" id="tab-growth"> 
+
+      <div class="chart-box"><h3 class="serif">GDP Growth by Country (2024 vs 2025F)</h3><canvas id="growthChart" height="380"></canvas></div> 
+
+    </div> 
+
+    <div class="tab-content" id="tab-fdi"> 
+
+      <div class="chart-grid-2"> 
+
+        <div class="chart-box"><h3 class="serif">FDI Inflow by Sector (2023)</h3><canvas id="fdiPieChart" height="280"></canvas></div> 
+
+        <div class="chart-box"><h3 class="serif">ASEAN's Top Trading Partners (2023, $B)</h3><canvas id="tradingPartnersChart" height="280"></canvas></div> 
+
+      </div> 
+
+    </div> 
+
+    <div class="tab-content" id="tab-german-fdi"> 
+
+      <div class="chart-box"> 
+
+        <h3 class="serif">German FDI Flow to ASEAN (Billion US$)</h3> 
+
+        <canvas id="germanFdiChart" height="300"></canvas> 
+
+        <div class="fdi-sectors"> 
+
+          <div class="fdi-sector"><div class="lbl">Manufacturing</div><div class="val">$2,519M</div></div> 
+
+          <div class="fdi-sector"><div class="lbl">Financial & Insurance</div><div class="val">$422M</div></div> 
+
+          <div class="fdi-sector"><div class="lbl">Professional/Scientific</div><div class="val">$170M</div></div> 
+
+          <div class="fdi-sector"><div class="lbl">Real Estate</div><div class="val">$155M</div></div> 
+
+          <div class="fdi-sector"><div class="lbl">Transport & Storage</div><div class="val">$64M</div></div> 
+
+        </div> 
+
+      </div> 
+
+    </div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- TRADE --> 
+
+<section class="section section-light" id="trade"> 
+
+  <div class="container"> 
+
+    <h2 class="section-title serif"><span>German–ASEAN Trade 2026</span></h2> 
+
+    <p class="section-subtitle">Total bilateral trade reached €79.7 billion. Germany exported €27.5B and imported €52.2B from ASEAN. Germany's total 2025 trade was €2.93T with exports up 0.9%.</p> 
+
+    <div class="trade-grid"> 
+
+      <div class="trade-box"><h3 class="serif" style="font-size:16px;margin-bottom:20px">Trade Turnover by Country (€ Billion)</h3><canvas id="tradeByCountryChart" height="340"></canvas></div> 
+
+      <div> 
+
+        <div class="trade-box" style="margin-bottom:16px"> 
+
+          <div class="trade-flow"><span>🇩🇪</span><span style="font-size:24px">⇄</span><span>🌏</span></div> 
+
+          <div class="trade-cols"> 
+
+            <div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">German Exports</div><div class="serif" style="font-size:32px;font-weight:900;color:var(--blue)">€27.5B</div><div style="font-size:13px;color:#e74c3c;font-weight:600">-2.4% YoY</div></div> 
+
+            <div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">German Imports</div><div class="serif" style="font-size:32px;font-weight:900;color:var(--teal)">€52.2B</div><div style="font-size:13px;color:#e74c3c;font-weight:600">-0.6% YoY</div></div> 
+
+          </div> 
+
+        </div> 
+
+        <div class="trade-box"> 
+
+          <h4 style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px">Key Trade Products</h4> 
+
+          <div style="margin-bottom:12px"><div style="font-size:12px;color:var(--grey);font-weight:600;margin-bottom:4px">German Exports to ASEAN</div><div style="font-size:13px">Machinery, Electrical Equipment, Vehicles, Optical & Medical Instruments, Pharmaceuticals</div></div> 
+
+          <div><div style="font-size:12px;color:var(--grey);font-weight:600;margin-bottom:4px">German Imports from ASEAN</div><div style="font-size:13px">Electrical Machinery, Footwear, Apparel, Optical Instruments, Electronics</div></div> 
+
+        </div> 
+
+      </div> 
+
+    </div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- COUNTRIES --> 
+
+<section class="section section-dark" id="countries"> 
+
+  <div class="container"> 
+
+    <h2 class="section-title serif" style="color:#fff"><span>ASEAN Countries</span></h2> 
+
+    <p class="section-subtitle">Click any country card for detailed economic profiles, trade data with Germany, FDI information, and growth forecasts.</p> 
+
+    <div class="country-grid" id="countryGrid"></div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- MODAL --> 
+
+<div class="modal-overlay" id="modalOverlay"> 
+
+  <div class="modal" id="modalContent"></div> 
+
+</div> 
+
+ 
+
+<!-- TIMELINE --> 
+
+<section class="section section-light" id="timeline"> 
+
+  <div class="container"> 
+
+    <h2 class="section-title serif"><span>ASEAN History & Milestones</span></h2> 
+
+    <div class="timeline-legend"> 
+
+      <div class="item"><div class="dot" style="background:#f39c12"></div><span>Foundation</span></div> 
+
+      <div class="item"><div class="dot" style="background:#00b4a0"></div><span>Expansion</span></div> 
+
+      <div class="item"><div class="dot" style="background:#0077c0"></div><span>Integration</span></div> 
+
+      <div class="item"><div class="dot" style="background:#00d4aa"></div><span>Modern Era</span></div> 
+
+    </div> 
+
+    <div class="timeline-grid" id="timelineGrid"></div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- PHOTO COLLAGE --> 
+
+<section class="collage-section" id="team"> 
+
+  <div class="container" style="text-align:center"> 
+
+    <h2 class="section-title serif" style="margin-bottom:6px"><span>Meet the AHK Leaders</span></h2> 
+
+    <p class="section-subtitle" style="margin:0 auto 48px;text-align:center">The German Chambers of Commerce network across ASEAN — your first point of contact for doing business in the region.</p> 
+
+    <div class="collage-grid" id="collageGrid"></div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- CONTACTS --> 
+
+<section class="section section-dark" id="contacts"> 
+
+  <div class="container"> 
+
+    <h2 class="section-title serif" style="color:#fff"><span>AHK Network in ASEAN</span></h2> 
+
+    <p class="section-subtitle">The German Chambers of Commerce across ASEAN provide market insights, business setup support, trade fair access, and strategic partner matching.</p> 
+
+    <div class="contact-grid" id="contactGrid"></div> 
+
+    <div class="services-grid"> 
+
+      <div class="service-tag">Market Insights & Business Opportunities</div> 
+
+      <div class="service-tag">Talent & HR Solutions</div> 
+
+      <div class="service-tag">Trade Fair & Networking Access</div> 
+
+      <div class="service-tag">Business Setup & Expansion</div> 
+
+      <div class="service-tag">Strategic Partner Matching</div> 
+
+      <div class="service-tag">Executive Training & Workforce Development</div> 
+
+    </div> 
+
+  </div> 
+
+</section> 
+
+ 
+
+<!-- FOOTER --> 
+
+<footer> 
+
+  <div class="footer-logos"> 
+
+    <img src="data:image/png;base64,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" alt="AHK"> 
+
+    <div class="footer-divider"></div> 
+
+    <img src="data:image/png;base64,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REBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH//Z" alt="BMWE" style="height:64px;background:#fff;padding:6px 12px;border-radius:6px"> 
+
+  </div> 
+
+  <div class="hashtag"><span>#PartnerInASEAN</span></div> 
+
+  <p class="copy">© AHK Network ASEAN, 2026. Supported by the Federal Ministry for Economic Affairs and Energy (BMWE). Data: ASEAN Statistics, Destatis, IMF, World Bank, ADB.</p> 
+
+</footer> 
+
+ 
+
+<script> 
+
+// Register datalabels plugin globally 
+
+Chart.register(ChartDataLabels); 
+
+Chart.defaults.font.family = "'Outfit',sans-serif"; 
+
+ 
+
+// ===== COUNTER ANIMATION ===== 
+
+function animateCounter(el) { 
+
+  const text = el.textContent.trim(); 
+
+  // Parse prefix ($, €, etc), number, and suffix (T, B, M, %, etc) 
+
+  const match = text.match(/^([^\d]*?)([\d,.]+)(.*)$/); 
+
+  if (!match) return; 
+
+  const prefix = match[1], targetStr = match[2], suffix = match[3]; 
+
+  const target = parseFloat(targetStr.replace(/,/g, '')); 
+
+  if (isNaN(target)) return; 
+
+  const decimals = targetStr.includes('.') ? targetStr.split('.')[1].length : 0; 
+
+  const duration = 1600; 
+
+  const start = performance.now(); 
+
+  function step(now) { 
+
+    const elapsed = now - start; 
+
+    const progress = Math.min(elapsed / duration, 1); 
+
+    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic 
+
+    const current = target * eased; 
+
+    el.textContent = prefix + current.toFixed(decimals) + suffix; 
+
+    if (progress < 1) requestAnimationFrame(step); 
+
+    else el.textContent = text; // restore exact original 
+
+  } 
+
+  requestAnimationFrame(step); 
+
+} 
+
+ 
+
+// Observer for stat values 
+
+const counterObserver = new IntersectionObserver((entries) => { 
+
+  entries.forEach(entry => { 
+
+    if (entry.isIntersecting && !entry.target.dataset.animated) { 
+
+      entry.target.dataset.animated = 'true'; 
+
+      animateCounter(entry.target); 
+
+    } 
+
+  }); 
+
+}, { threshold: 0.3 }); 
+
+ 
+
+// Observe all stat-value elements after DOM is ready 
+
+document.querySelectorAll('.stat-value').forEach(el => counterObserver.observe(el)); 
+
+ 
+
+// Observer for fade-up animations on sections 
+
+const fadeObserver = new IntersectionObserver((entries) => { 
+
+  entries.forEach(entry => { 
+
+    if (entry.isIntersecting) { 
+
+      entry.target.style.opacity = '1'; 
+
+      entry.target.style.transform = 'translateY(0)'; 
+
+    } 
+
+  }); 
+
+}, { threshold: 0.1 }); 
+
+ 
+
+document.querySelectorAll('.highlight-card, .country-card, .timeline-card, .contact-card, .collage-item').forEach(el => { 
+
+  el.style.opacity = '0'; 
+
+  el.style.transform = 'translateY(30px)'; 
+
+  el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out'; 
+
+  fadeObserver.observe(el); 
+
+}); 
+
+ 
+
+// ===== DATA ===== 
+
+const countries = [ 
+
+  {name:"Vietnam",flag:"🇻🇳",color:"#e74c3c",summary:"ASEAN's fastest-growing economy and a key manufacturing hub with projected GDP growth of ~7% in 2025. The EU-Vietnam FTA (EVFTA) continues driving deeper economic integration.",population:101.6,surface:"331,210",gdpNominal2025:506.4,gdpGrowth:[{y:"2023",v:5.0},{y:"2024",v:7.1},{y:"2025F",v:7.0},{y:"2026F",v:6.5}],tradeWithGermany:{exports:15.1,imports:3.7,total:18.8,yoy:"+9.4%"},germanFDI:"+118.5M EUR (2024)",topExports:"Electrical Equipment, Footwear, Machinery, Apparel",topImports:"Aircraft & Spacecraft, Machinery, Optical Products, Pharma",fdiVolume:"322.5B US$",keyFDISectors:"Manufacturing & Processing, Real Estate, Energy, ICT"}, 
+
+  {name:"Malaysia",flag:"🇲🇾",color:"#3498db",summary:"2025 ASEAN Chair with optimistic outlook. GDP grew 5.2% in Q3 2025. Focus on digitalization, green tech, and special economic zones aligns with Germany's strengths.",population:33.9,surface:"329,847",gdpNominal2025:488.3,gdpGrowth:[{y:"2023",v:3.6},{y:"2024",v:4.8},{y:"2025F",v:5.0},{y:"2026F",v:4.5}],tradeWithGermany:{exports:10.8,imports:6.6,total:17.4,yoy:"+3.2%"},germanFDI:"+6.9B EUR (2024)",topExports:"Electrical Equipment, Machinery, Optical Products, Rubber",topImports:"Electrical Equipment, Machinery, Motor Vehicles, Optical Products",fdiVolume:"283.2B US$",keyFDISectors:"Services, Manufacturing, Primary Industry"}, 
+
+  {name:"Indonesia",flag:"🇮🇩",color:"#e74c3c",summary:"World's third-largest democracy and only ASEAN G20 member. GDP growth projected at 5.0% in 2025. The Indonesia-EU CEPA expected to expand trade further.",population:284.4,surface:"1,904,569",gdpNominal2025:1490,gdpGrowth:[{y:"2023",v:5.0},{y:"2024",v:5.0},{y:"2025F",v:5.0},{y:"2026F",v:5.1}],tradeWithGermany:{exports:4.4,imports:2.9,total:13.8,yoy:"-1.2%"},germanFDI:"+326.7M EUR (2024)",topExports:"Electronic Devices, Textiles, Vehicles, Chemicals",topImports:"Machinery, Steel, Vehicles, Chemicals",fdiVolume:"105.1B US$",keyFDISectors:"Base Metals, Transportation, Mining, Housing"}, 
+
+  {name:"Thailand",flag:"🇹🇭",color:"#2ecc71",summary:"Growth projected at 2.0% in 2025, driven by tourism boom and electronics exports. Germany remains Thailand's largest EU trading partner.",population:70.3,surface:"513,120",gdpNominal2025:545.3,gdpGrowth:[{y:"2023",v:1.9},{y:"2024",v:2.6},{y:"2025F",v:2.0},{y:"2026F",v:1.6}],tradeWithGermany:{exports:8.6,imports:5.1,total:13.7,yoy:"-0.8%"},germanFDI:"+29.9M EUR (2024)",topExports:"Electrical Equipment, Machinery, Pearls, Optical Products",topImports:"Machinery, Electrical Equipment, Motor Vehicles, Optical Products",fdiVolume:"314.4B US$",keyFDISectors:"E&E Industry, Digital Industry, Machinery & Vehicles"}, 
+
+  {name:"Singapore",flag:"🇸🇬",color:"#e74c3c",summary:"GDP grew 4.4% in 2024. 2025 growth forecast 1-3%. Leading financial hub and gateway to ASEAN. Total FDI stock of $2.6 trillion.",population:6.0,surface:"719",gdpNominal2025:561.7,gdpGrowth:[{y:"2023",v:1.1},{y:"2024",v:4.4},{y:"2025F",v:2.5},{y:"2026F",v:2.5}],tradeWithGermany:{exports:4.9,imports:7.0,total:11.9,yoy:"+1.5%"},germanFDI:"+989M EUR (2023)",topExports:"Machinery, Electrical Equipment, Optical Products",topImports:"Organic Chemicals, Optical Products, Electrical Equipment, Pharma",fdiVolume:"2,632B US$",keyFDISectors:"Finance & Insurance, Professional Services, Manufacturing"}, 
+
+  {name:"Philippines",flag:"🇵🇭",color:"#3498db",summary:"Strong growth with young, English-speaking workforce. GDP projected around 4.4% in 2025. CREATE MORE law drives investment.",population:114.4,surface:"298,170",gdpNominal2025:507.7,gdpGrowth:[{y:"2023",v:5.5},{y:"2024",v:4.8},{y:"2025F",v:4.4},{y:"2026F",v:4.4}],tradeWithGermany:{exports:4.7,imports:2.0,total:6.7,yoy:"-2.1%"},germanFDI:"+4.1M EUR (2024)",topExports:"Electrical Equipment, Machinery, Optical Products, Fats & Oils",topImports:"Electrical Equipment, Machinery, Aircraft, Pharma",fdiVolume:"127.9B US$",keyFDISectors:"Manufacturing, Real Estate, Info & Communications"}, 
+
+  {name:"Cambodia",flag:"🇰🇭",color:"#9b59b6",summary:"One of ASEAN's fastest-growing economies with 5.8% GDP growth forecast for 2025. RCEP participation enhances integration.",population:17.4,surface:"181,035",gdpNominal2025:51.2,gdpGrowth:[{y:"2023",v:5.0},{y:"2024",v:5.5},{y:"2025F",v:5.8},{y:"2026F",v:6.2}],tradeWithGermany:{exports:2.2,imports:0.2,total:2.4,yoy:"+5.3%"},germanFDI:"N/A",topExports:"Electronic Devices, Textiles, Vehicles, Agriculture",topImports:"Machinery, Steel, Vehicles, Chemicals",fdiVolume:"42.5B US$",keyFDISectors:"Manufacturing, Agriculture, Tourism, Infrastructure"}, 
+
+  {name:"Laos",flag:"🇱🇦",color:"#1abc9c",summary:"Growth projected at 3.5% in 2025, driven by tourism, transport, and energy. Aims to become the 'battery of Southeast Asia'.",population:7.8,surface:"230,800",gdpNominal2025:14.4,gdpGrowth:[{y:"2023",v:3.7},{y:"2024",v:4.1},{y:"2025F",v:3.5},{y:"2026F",v:3.1}],tradeWithGermany:{exports:0.27,imports:0.03,total:0.3,yoy:"+2.1%"},germanFDI:"N/A",topExports:"Apparel, Electrical Products, Footwear",topImports:"Motor Vehicles, Machinery, Electrical Products",fdiVolume:"14.7B US$",keyFDISectors:"Energy, Mining, Agriculture"}, 
+
+  {name:"Myanmar",flag:"🇲🇲",color:"#f39c12",summary:"Economy grew 1% in 2024, hindered by political instability. Agriculture and resource extraction show resilience.",population:54.8,surface:"676,578",gdpNominal2025:65.0,gdpGrowth:[{y:"2023",v:2.5},{y:"2024",v:1.0},{y:"2025F",v:1.1},{y:"2026F",v:1.3}],tradeWithGermany:{exports:1.18,imports:0.08,total:1.3,yoy:"-3.5%"},germanFDI:"N/A",topExports:"Apparel, Footwear, Leather Goods",topImports:"Pharmaceutical Products, Fertilizers, Optical Products",fdiVolume:"32.7B US$",keyFDISectors:"Oil & Gas, Manufacturing, Infrastructure"}, 
+
+]; 
+
+ 
+
+const contactsData = [ 
+
+  {name:"Dr. Monika Erath",country:"Indonesia",email:"info@ekonid.id",phone:"+62 21 5098 5800",web:"indonesien.ahk.de",photo:"https://gcabc.asia/storage/director_photos/01KG3QS5R4002WSK4ZEXDY1Z73.png",initials:"ME",color:"#e74c3c"}, 
+
+  {name:"Dr. Tim Philippi",country:"Singapore",email:"tim.philippi@sgc.org.sg",phone:"+65 6433 5331",web:"sgc.org.sg",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-singapore-phillipi-min.png",initials:"TP",color:"#00b4a0"}, 
+
+  {name:"Peter Kompalla",country:"Vietnam, Myanmar, Cambodia, Laos",email:"kompalla@vietnam.ahk.de",phone:"+84 28 3823 9775",web:"vietnam.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-vietnam-kompalla-min.png",initials:"PK",color:"#e74c3c"}, 
+
+  {name:"Christopher Zimmer",country:"Philippines",email:"christopher.zimmer@gpcci.org",phone:"+63 2 8519 8110",web:"philippinen.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-philippines-zimmer-min.png",initials:"CZ",color:"#9b59b6"}, 
+
+  {name:"Hannes Farlock",country:"Malaysia",email:"info@malaysia.ahk.de",phone:"+60 3 9235 1800",web:"malaysia.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-malaysia-farlock.png",initials:"HF",color:"#3498db"}, 
+
+  {name:"Dr. Roland Wein",country:"Thailand",email:"wein@gtcc.org",phone:"+66 2 055 0611",web:"thailand.ahk.de",photo:"https://d3ixhgw36r0eyk.cloudfront.net/ekonid/gcabc/members/ahk-thailand-wein-min.png",initials:"RW",color:"#f39c12"}, 
+
+]; 
+
+ 
+
+const highlights = [ 
+
+  {icon:"🏦",title:"5th Largest GDP",desc:"ASEAN's collective GDP reached ~$4T in 2025, ranking 5th globally behind the US, China, EU, and Japan."}, 
+
+  {icon:"👥",title:"3rd Largest Population",desc:"With ~692M inhabitants, ASEAN is the world's 3rd most populous region. Nearly half are under 30."}, 
+
+  {icon:"💰",title:"Record FDI of $230B",desc:"Foreign direct investment reached $230B in 2023. Finance, manufacturing, and real estate led sectors."}, 
+
+  {icon:"🌐",title:"$2T Digital Economy by 2030",desc:"The ASEAN Digital Economy Framework Agreement (DEFA) will enhance cross-border digital trade."}, 
+
+  {icon:"🇪🇺",title:"EU-ASEAN FTA Progress",desc:"FTA negotiations resumed with several ASEAN members. The 31st ASEAN-EU JCC committed to enhanced trade."}, 
+
+  {icon:"🇩🇪",title:"Strong German Partnership",desc:"The 8th ASEAN-Germany Development Partnership Meeting reinforced cooperation across multiple sectors."}, 
+
+]; 
+
+ 
+
+const timelineData = [ 
+
+  {year:"1967",text:"ASEAN founded by Indonesia, Malaysia, Philippines, Singapore, and Thailand",icon:"🏛️",era:"founding",color:"#f39c12"}, 
+
+  {year:"1984",text:"Brunei joined ASEAN",icon:"🇧🇳",era:"expansion",color:"#00b4a0"}, 
+
+  {year:"1995",text:"Vietnam became a member",icon:"🇻🇳",era:"expansion",color:"#00b4a0"}, 
+
+  {year:"1997",text:"Laos and Myanmar joined",icon:"🌏",era:"expansion",color:"#00b4a0"}, 
+
+  {year:"1999",text:"Cambodia completed the ten-member group",icon:"🇰🇭",era:"expansion",color:"#00b4a0"}, 
+
+  {year:"2007",text:"ASEAN Charter signed, establishing legal framework",icon:"📜",era:"integration",color:"#0077c0"}, 
+
+  {year:"2015",text:"ASEAN Economic Community (AEC) established",icon:"💼",era:"integration",color:"#0077c0"}, 
+
+  {year:"2020",text:"RCEP signed with key regional partners",icon:"🤝",era:"modern",color:"#00d4aa"}, 
+
+  {year:"2024",text:"Community Vision 2045 adopted",icon:"🔮",era:"modern",color:"#00d4aa"}, 
+
+  {year:"2025",text:"Malaysia chairs ASEAN; DEFA expected",icon:"🇲🇾",era:"modern",color:"#00d4aa"}, 
+
+]; 
+
+ 
+
+// ===== RENDER HIGHLIGHTS ===== 
+
+document.getElementById('highlightCards').innerHTML = highlights.map(h=>` 
+
+  <div class="highlight-card"><div class="icon">${h.icon}</div><h3 class="serif">${h.title}</h3><p>${h.desc}</p></div> 
+
+`).join(''); 
+
+ 
+
+// ===== RENDER COUNTRIES ===== 
+
+document.getElementById('countryGrid').innerHTML = countries.map((c,i)=>` 
+
+  <div class="country-card" onclick="openModal(${i})"> 
+
+    <div class="flag">${c.flag}</div> 
+
+    <h3 class="serif">${c.name}</h3> 
+
+    <div class="stat-row"><span class="lbl">GDP 2025F</span><span class="val" style="color:var(--blue)">$${c.gdpNominal2025}B</span></div> 
+
+    <div class="stat-row"><span class="lbl">Growth</span><span class="val" style="color:var(--teal)">${c.gdpGrowth[2].v}%</span></div> 
+
+    <div class="stat-row"><span class="lbl">Trade w/ DE</span><span class="val" style="color:var(--orange)">€${c.tradeWithGermany.total}B</span></div> 
+
+    <div class="cta">Click for details →</div> 
+
+  </div> 
+
+`).join(''); 
+
+ 
+
+// ===== RENDER TIMELINE ===== 
+
+document.getElementById('timelineGrid').innerHTML = timelineData.map((t,i)=>` 
+
+  <div class="timeline-card" style="border-top-color:${t.color}"> 
+
+    <div class="bg-icon">${t.icon}</div> 
+
+    <div class="year-badge" style="background:${t.color}18;border:1px solid ${t.color}33"> 
+
+      <span class="year serif" style="color:${t.color}">${t.year}</span> 
+
+    </div> 
+
+    <div class="content"><span class="icon">${t.icon}</span><p>${t.text}</p></div> 
+
+  </div> 
+
+`).join(''); 
+
+ 
+
+// ===== RENDER COLLAGE (with initials fallback) ===== 
+
+const collageFlags = {Indonesia:'🇮🇩',Malaysia:'🇲🇾','Vietnam, Myanmar, Cambodia, Laos':'🇻🇳',Philippines:'🇵🇭',Singapore:'🇸🇬',Thailand:'🇹🇭'}; 
+
+document.getElementById('collageGrid').innerHTML = contactsData.map((c,i)=>` 
+
+  <div class="collage-item"> 
+
+    <div class="collage-hex"> 
+
+      <img src="${c.photo}" alt="${c.name}" 
+
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"> 
+
+      <div class="collage-fallback" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,${c.color},${c.color}99);align-items:center;justify-content:center;font-size:36px;font-weight:800;color:#fff;font-family:'Outfit',sans-serif">${c.initials}</div> 
+
+    </div> 
+
+    <div class="collage-name serif">${c.name}</div> 
+
+    <div class="collage-country"><span class="flag">${collageFlags[c.country]||'🌏'}</span>${c.country.split(',')[0]}</div> 
+
+  </div> 
+
+`).join(''); 
+
+ 
+
+// ===== RENDER CONTACTS (with initials fallback) ===== 
+
+document.getElementById('contactGrid').innerHTML = contactsData.map(c=>` 
+
+  <div class="contact-card"> 
+
+    <div style="position:relative;width:72px;height:72px;flex-shrink:0"> 
+
+      <img class="contact-photo" src="${c.photo}" alt="${c.name}" 
+
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"> 
+
+      <div style="display:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,${c.color},${c.color}99);align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;font-family:'Outfit',sans-serif;border:3px solid rgba(0,212,170,.3)">${c.initials}</div> 
+
+    </div> 
+
+    <div class="contact-info"> 
+
+      <h3 class="serif">${c.name}</h3> 
+
+      <div class="role">${c.country}</div> 
+
+      <div class="detail">📧 ${c.email}</div> 
+
+      <div class="detail">📞 ${c.phone}</div> 
+
+      <div class="detail">🌐 ${c.web}</div> 
+
+    </div> 
+
+  </div> 
+
+`).join(''); 
+
+ 
+
+// ===== MODAL ===== 
+
+function openModal(i) { 
+
+  const c = countries[i]; 
+
+  const yoyColor = c.tradeWithGermany.yoy.startsWith('+') ? 'var(--green)' : 'var(--orange)'; 
+
+  document.getElementById('modalContent').innerHTML = ` 
+
+    <div class="modal-header"> 
+
+      <button class="modal-close" onclick="closeModal()">✕</button> 
+
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px"> 
+
+        <span style="font-size:56px">${c.flag}</span> 
+
+        <div><h2 class="serif" style="font-size:36px;margin:0">${c.name}</h2><div style="opacity:.8;font-size:14px">Pop: ${c.population}M · Area: ${c.surface} km²</div></div> 
+
+      </div> 
+
+      <p style="font-size:15px;line-height:1.6;opacity:.9">${c.summary}</p> 
+
+    </div> 
+
+    <div class="modal-body"> 
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px"> 
+
+        <div style="background:var(--light-bg);border-radius:12px;padding:16px;text-align:center"><div class="serif stat-value" style="font-size:28px;font-weight:900;color:var(--blue)">$${c.gdpNominal2025}B</div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">GDP 2025F</div></div> 
+
+        <div style="background:var(--light-bg);border-radius:12px;padding:16px;text-align:center"><div class="serif stat-value" style="font-size:28px;font-weight:900;color:var(--teal)">${c.gdpGrowth[2].v}%</div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">Growth 2025F</div></div> 
+
+        <div style="background:var(--light-bg);border-radius:12px;padding:16px;text-align:center"><div class="serif stat-value" style="font-size:28px;font-weight:900;color:var(--orange)">€${c.tradeWithGermany.total}B</div><div style="font-size:12px;color:var(--grey);font-weight:600;text-transform:uppercase">Trade with 🇩🇪</div></div> 
+
+      </div> 
+
+      <h3 class="serif" style="font-size:18px;margin-bottom:16px">GDP Growth Trajectory</h3> 
+
+      <canvas id="modalChart" height="200"></canvas> 
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px"> 
+
+        <div><h4 style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:12px">🇩🇪 Germany Trade Relations</h4> 
+
+          <div style="background:var(--light-bg);border-radius:12px;padding:16px"> 
+
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--grey)">German Exports</span><span style="font-weight:700;color:var(--blue)">€${c.tradeWithGermany.imports}B</span></div> 
+
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--grey)">German Imports</span><span style="font-weight:700;color:var(--teal)">€${c.tradeWithGermany.exports}B</span></div> 
+
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--grey)">YoY Change</span><span style="font-weight:700;color:${yoyColor}">${c.tradeWithGermany.yoy}</span></div> 
+
+            <div style="display:flex;justify-content:space-between"><span style="font-size:13px;color:var(--grey)">German FDI</span><span style="font-weight:700;font-size:12px">${c.germanFDI}</span></div> 
+
+          </div> 
+
+        </div> 
+
+        <div><h4 style="font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:12px">Investment Profile</h4> 
+
+          <div style="background:var(--light-bg);border-radius:12px;padding:16px"> 
+
+            <div style="margin-bottom:8px"><div style="font-size:12px;color:var(--grey);font-weight:600">Total FDI Stock</div><div style="font-weight:700">${c.fdiVolume}</div></div> 
+
+            <div><div style="font-size:12px;color:var(--grey);font-weight:600">Key FDI Sectors</div><div style="font-weight:600;color:var(--blue);font-size:13px">${c.keyFDISectors}</div></div> 
+
+          </div> 
+
+        </div> 
+
+      </div> 
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px"> 
+
+        <div><h4 style="font-size:13px;font-weight:700;color:var(--grey);text-transform:uppercase;margin-bottom:8px">Top German Export Products</h4><p style="font-size:14px;line-height:1.5">${c.topImports}</p></div> 
+
+        <div><h4 style="font-size:13px;font-weight:700;color:var(--grey);text-transform:uppercase;margin-bottom:8px">Top German Import Products</h4><p style="font-size:14px;line-height:1.5">${c.topExports}</p></div> 
+
+      </div> 
+
+    </div>`; 
+
+  document.getElementById('modalOverlay').classList.add('open'); 
+
+  // Animate modal stat values 
+
+  setTimeout(()=>{ 
+
+    document.querySelectorAll('#modalContent .stat-value').forEach(el => animateCounter(el)); 
+
+  },200); 
+
+  setTimeout(()=>{ 
+
+    const ctx = document.getElementById('modalChart'); 
+
+    if(ctx) new Chart(ctx,{type:'bar',data:{labels:c.gdpGrowth.map(g=>g.y),datasets:[{label:'GDP Growth %',data:c.gdpGrowth.map(g=>g.v),backgroundColor:c.gdpGrowth.map((_,j)=>j===c.gdpGrowth.length-1?'#f39c12':j===c.gdpGrowth.length-2?'#00b4a0':'#0077c0'),borderRadius:8}]},options:{responsive:true,plugins:{legend:{display:false},datalabels:{anchor:'end',align:'top',color:'#333',font:{weight:'bold',size:13},formatter:v=>v+'%'}},scales:{y:{beginAtZero:true,ticks:{callback:v=>v+'%'}}}}}); 
+
+  },100); 
+
+} 
+
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open')} 
+
+document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()}); 
+
+ 
+
+// ===== TABS ===== 
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{ 
+
+  btn.addEventListener('click',()=>{ 
+
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); 
+
+    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active')); 
+
+    btn.classList.add('active'); 
+
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active'); 
+
+    initCharts(); 
+
+  }); 
+
+}); 
+
+ 
+
+// ===== NAV SCROLL ===== 
+
+window.addEventListener('scroll',()=>{ 
+
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60); 
+
+}); 
+
+ 
+
+// ===== MOBILE NAV TOGGLE ===== 
+
+document.getElementById('navToggle').addEventListener('click',()=>{ 
+
+  document.getElementById('navLinks').classList.toggle('open'); 
+
+}); 
+
+document.querySelectorAll('#navLinks a').forEach(a=>{ 
+
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')); 
+
+}); 
+
+ 
+
+// ===== CHARTS (with datalabels + legends) ===== 
+
+let chartsInit = {}; 
+
+const dlWhite = {color:'rgba(255,255,255,.9)',font:{weight:'bold',size:12}}; 
+
+const dlDark = {color:'#333',font:{weight:'bold',size:12}}; 
+
+ 
+
+function initCharts(){ 
+
+  // Growth chart 
+
+  if(!chartsInit.growth && document.getElementById('tab-growth').classList.contains('active')){ 
+
+    const gd = [{n:"Vietnam",g24:7.1,g25:7.0},{n:"Cambodia",g24:5.5,g25:5.8},{n:"Indonesia",g24:5.0,g25:5.0},{n:"Malaysia",g24:4.8,g25:5.0},{n:"Philippines",g24:4.8,g25:4.4},{n:"Laos",g24:4.1,g25:3.5},{n:"Thailand",g24:2.6,g25:2.0},{n:"Singapore",g24:4.4,g25:2.5},{n:"Myanmar",g24:1.0,g25:1.1}]; 
+
+    new Chart(document.getElementById('growthChart'),{type:'bar',data:{labels:gd.map(d=>d.n),datasets:[ 
+
+      {label:'2024',data:gd.map(d=>d.g24),backgroundColor:'#0077c0',borderRadius:6,barPercentage:.4}, 
+
+      {label:'2025 Forecast',data:gd.map(d=>d.g25),backgroundColor:'#00b4a0',borderRadius:6,barPercentage:.4} 
+
+    ]},options:{indexAxis:'y',responsive:true, 
+
+      plugins:{ 
+
+        legend:{position:'top',labels:{color:'rgba(255,255,255,.85)',font:{size:13,weight:'600'},padding:20,usePointStyle:true,pointStyle:'rectRounded'}}, 
+
+        datalabels:{anchor:'end',align:'end',color:'rgba(255,255,255,.85)',font:{weight:'bold',size:11},formatter:v=>v+'%'} 
+
+      }, 
+
+      scales:{x:{max:9,ticks:{color:'rgba(255,255,255,.6)',callback:v=>v+'%'},grid:{color:'rgba(255,255,255,.06)'}},y:{ticks:{color:'rgba(255,255,255,.9)',font:{size:13}},grid:{display:false}}} 
+
+    }}); 
+
+    chartsInit.growth=true; 
+
+  } 
+
+  // FDI Pie + Trading Partners 
+
+  if(!chartsInit.fdi && document.getElementById('tab-fdi').classList.contains('active')){ 
+
+    new Chart(document.getElementById('fdiPieChart'),{type:'doughnut',data:{labels:['Manufacturing','Finance','Wholesale/Retail','Real Estate','Professional Svc.','Other'],datasets:[{data:[32,28,15,12,7,6],backgroundColor:['#0077c0','#00b4a0','#f39c12','#e74c3c','#9b59b6','#3498db'],borderWidth:0}]},options:{responsive:true, 
+
+      plugins:{ 
+
+        legend:{position:'bottom',labels:{color:'rgba(255,255,255,.85)',padding:14,font:{size:12},usePointStyle:true,pointStyle:'circle'}}, 
+
+        datalabels:{color:'#fff',font:{weight:'bold',size:13},formatter:(v,ctx)=>{const t=ctx.dataset.data.reduce((a,b)=>a+b,0);return Math.round(v/t*100)+'%'}} 
+
+      } 
+
+    }}); 
+
+    new Chart(document.getElementById('tradingPartnersChart'),{type:'bar',data:{labels:['🇨🇳 China','🇺🇸 USA','🇪🇺 EU','🇯🇵 Japan','🌏 Intra-ASEAN'],datasets:[{label:'Total Trade ($B)',data:[696.9,395.3,280,239.5,196.9],backgroundColor:['#f39c12','#0077c0','#00b4a0','#f1c40f','#00d4aa'],borderRadius:8}]},options:{responsive:true, 
+
+      plugins:{ 
+
+        legend:{display:true,labels:{color:'rgba(255,255,255,.85)',font:{size:12}}}, 
+
+        datalabels:{anchor:'end',align:'top',color:'rgba(255,255,255,.85)',font:{weight:'bold',size:12},formatter:v=>'$'+v+'B'} 
+
+      }, 
+
+      scales:{y:{ticks:{color:'rgba(255,255,255,.6)',callback:v=>'$'+v+'B'},grid:{color:'rgba(255,255,255,.06)'}},x:{ticks:{color:'rgba(255,255,255,.85)',font:{size:12}},grid:{display:false}}} 
+
+    }}); 
+
+    chartsInit.fdi=true; 
+
+  } 
+
+  // German FDI 
+
+  if(!chartsInit.germanFdi && document.getElementById('tab-german-fdi').classList.contains('active')){ 
+
+    const fd = [{y:'2019',v:-0.9},{y:'2020',v:-2.9},{y:'2021',v:3.0},{y:'2022',v:2.8},{y:'2023',v:3.3},{y:'2024E',v:3.8}]; 
+
+    new Chart(document.getElementById('germanFdiChart'),{type:'bar',data:{labels:fd.map(d=>d.y),datasets:[{label:'German FDI Flow to ASEAN ($B)',data:fd.map(d=>d.v),backgroundColor:fd.map(d=>d.v>=0?'#00b4a0':'#e74c3c'),borderRadius:8}]},options:{responsive:true, 
+
+      plugins:{ 
+
+        legend:{display:true,labels:{color:'rgba(255,255,255,.85)',font:{size:12}}}, 
+
+        datalabels:{anchor:'end',align:function(ctx){return ctx.dataset.data[ctx.dataIndex]>=0?'top':'bottom'},color:'rgba(255,255,255,.85)',font:{weight:'bold',size:13},formatter:v=>'$'+v.toFixed(1)+'B'} 
+
+      }, 
+
+      scales:{y:{ticks:{color:'rgba(255,255,255,.6)',callback:v=>'$'+v+'B'},grid:{color:'rgba(255,255,255,.08)'}},x:{ticks:{color:'rgba(255,255,255,.85)',font:{size:13}},grid:{display:false}}} 
+
+    }}); 
+
+    chartsInit.germanFdi=true; 
+
+  } 
+
+} 
+
+ 
+
+// ===== TRADE BY COUNTRY CHART ===== 
+
+const tbc = [{n:"Vietnam",v:18.8},{n:"Malaysia",v:17.4},{n:"Indonesia",v:13.8},{n:"Thailand",v:13.7},{n:"Singapore",v:11.9},{n:"Philippines",v:6.7},{n:"Cambodia",v:2.4},{n:"Myanmar",v:1.3},{n:"Laos",v:0.3},{n:"Brunei",v:0.04}]; 
+
+const tbcColors = ['#0077c0','#00b4a0','#f39c12','#e74c3c','#9b59b6','#3498db','#0077c0','#00b4a0','#f39c12','#e74c3c']; 
+
+new Chart(document.getElementById('tradeByCountryChart'),{type:'bar',data:{labels:tbc.map(d=>d.n),datasets:[{label:'Trade Turnover (€ Billion)',data:tbc.map(d=>d.v),backgroundColor:tbcColors,borderRadius:8}]},options:{indexAxis:'y',responsive:true, 
+
+  plugins:{ 
+
+    legend:{display:true,labels:{font:{size:12},padding:16}}, 
+
+    datalabels:{anchor:'end',align:'end',color:'#333',font:{weight:'bold',size:12},formatter:v=>v<1?'€'+v+'B':'€'+v+'B'} 
+
+  }, 
+
+  scales:{x:{ticks:{font:{size:12},callback:v=>'€'+v+'B'},grid:{color:'rgba(0,0,0,.06)'}},y:{ticks:{font:{size:13,weight:'600'}},grid:{display:false}}} 
+
+}}); 
+
+</script> 
+
+</body> 
+
+</html> 
